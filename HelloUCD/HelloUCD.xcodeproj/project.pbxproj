@@ -18,6 +18,7 @@
 		F13A266116A46934000B8A2B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F13A266016A46934000B8A2B /* Default-568h@2x.png */; };
 		F13A266416A46934000B8A2B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13A266216A46934000B8A2B /* MainStoryboard.storyboard */; };
 		F13A266716A46934000B8A2B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13A266616A46934000B8A2B /* ViewController.m */; };
+		F13A267016A477CF000B8A2B /* ucdlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F13A266F16A477CF000B8A2B /* ucdlogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F13A266316A46934000B8A2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F13A266516A46934000B8A2B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F13A266616A46934000B8A2B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F13A266F16A477CF000B8A2B /* ucdlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ucdlogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		F13A265116A46934000B8A2B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F13A266F16A477CF000B8A2B /* ucdlogo.png */,
 				F13A265216A46934000B8A2B /* HelloUCD-Info.plist */,
 				F13A265316A46934000B8A2B /* InfoPlist.strings */,
 				F13A265616A46934000B8A2B /* main.m */,
@@ -163,6 +166,7 @@
 				F13A265F16A46934000B8A2B /* Default@2x.png in Resources */,
 				F13A266116A46934000B8A2B /* Default-568h@2x.png in Resources */,
 				F13A266416A46934000B8A2B /* MainStoryboard.storyboard in Resources */,
+				F13A267016A477CF000B8A2B /* ucdlogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,8 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vX-7h-CGN">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="EiB-8Q-wSN"/>
-                                    <constraint firstAttribute="height" constant="64" id="TCC-DF-SB7"/>
+                                    <constraint firstAttribute="height" constant="95" id="ZHl-9n-C00"/>
+                                    <constraint firstAttribute="width" constant="192" id="tvc-hT-S3l"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Hello UCD!">
@@ -27,20 +27,22 @@
                                     </fragment>
                                 </attributedString>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="6" height="6"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hby-C2-0Ke">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ucdlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="hby-C2-0Ke">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="WrW-99-GTG"/>
-                                    <constraint firstAttribute="width" constant="240" id="aZI-Xd-g4w"/>
+                                    <constraint firstAttribute="height" constant="228" id="Epf-nA-jK3"/>
+                                    <constraint firstAttribute="width" constant="245" id="wgj-Ge-eKd"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hby-C2-0Ke" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="QgE-hl-An8"/>
-                            <constraint firstItem="hby-C2-0Ke" firstAttribute="centerX" secondItem="0vX-7h-CGN" secondAttribute="centerX" type="default" id="TBo-Ko-5Ly"/>
+                            <constraint firstItem="0vX-7h-CGN" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="DT4-rA-zVQ"/>
+                            <constraint firstItem="0vX-7h-CGN" firstAttribute="centerX" secondItem="hby-C2-0Ke" secondAttribute="centerX" type="default" id="HNU-Op-biH"/>
                             <constraint firstItem="0vX-7h-CGN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Z00-hp-EKw"/>
-                            <constraint firstItem="0vX-7h-CGN" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="jZs-70-gu3"/>
+                            <constraint firstItem="hby-C2-0Ke" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="nfr-Ww-ouw"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -48,6 +50,9 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="ucdlogo.png" width="196" height="285"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
