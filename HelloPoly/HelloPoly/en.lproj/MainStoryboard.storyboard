@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoA-X5-xKE">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="Bd6-9H-Kcq"/>
+                                    <constraint firstAttribute="height" constant="21" id="Mbm-gm-s3Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGV-6F-MFV">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Decrease">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="decrease:" destination="2" eventType="touchUpInside" id="n0p-jt-fzi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-GQ-Ifu">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Increase">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="increase:" destination="2" eventType="touchUpInside" id="TST-yR-1ff"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Sides:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjB-nF-WEE">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="OQX-JA-xXX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zty-dr-caE" customClass="PolygonView">
+                                <color key="backgroundColor" white="0.95240045362903236" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EGV-6F-MFV" secondAttribute="trailing" constant="13" id="041-hE-PD3"/>
+                            <constraint firstItem="gjB-nF-WEE" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="10h-kz-1gB"/>
+                            <constraint firstItem="Zty-dr-caE" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="6ZH-rd-y4y"/>
+                            <constraint firstItem="uoA-X5-xKE" firstAttribute="centerX" secondItem="gjB-nF-WEE" secondAttribute="centerX" type="default" id="Bqp-4x-sQ1"/>
+                            <constraint firstAttribute="bottom" secondItem="Zty-dr-caE" secondAttribute="bottom" constant="56" id="MCF-K3-9Ta"/>
+                            <constraint firstItem="e1e-GQ-Ifu" firstAttribute="top" secondItem="uoA-X5-xKE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="O8z-oj-346"/>
+                            <constraint firstItem="e1e-GQ-Ifu" firstAttribute="baseline" secondItem="EGV-6F-MFV" secondAttribute="baseline" type="default" id="aLe-gL-P92"/>
+                            <constraint firstItem="e1e-GQ-Ifu" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aoc-s0-Yd6"/>
+                            <constraint firstAttribute="trailing" secondItem="Zty-dr-caE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="b6x-c5-X33"/>
+                            <constraint firstItem="Zty-dr-caE" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="26" id="foY-7M-RWC"/>
+                            <constraint firstItem="gjB-nF-WEE" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="j61-O3-H5f"/>
+                            <constraint firstItem="uoA-X5-xKE" firstAttribute="top" secondItem="gjB-nF-WEE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ts3-1D-sqD"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KVm-Lv-GpS" appends="YES" id="4yy-uP-qD7"/>
+                            <outletCollection property="gestureRecognizers" destination="DGT-dN-rph" appends="YES" id="uX8-qM-D1j"/>
+                        </connections>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="decrease" destination="EGV-6F-MFV" id="dwU-Rp-KmE"/>
+                        <outlet property="increase" destination="e1e-GQ-Ifu" id="BJa-6e-GJK"/>
+                        <outlet property="numberOfSidesLabel" destination="uoA-X5-xKE" id="UQi-7l-OH5"/>
+                        <outlet property="polygonView" destination="Zty-dr-caE" id="6dA-Vt-XIF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <customObject id="P7z-WY-zPu" userLabel="Model" customClass="PolygonShape"/>
+                <swipeGestureRecognizer direction="left" id="KVm-Lv-GpS">
+                    <connections>
+                        <action selector="handleSwipeLeft:" destination="2" id="Ih3-af-ueC"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="DGT-dN-rph">
+                    <connections>
+                        <action selector="handleSwipeRight:" destination="2" id="Kr2-lu-pwY"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-218" y="-45"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PolygonShape" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PolygonShape.h"/>
+        </class>
+        <class className="PolygonView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PolygonView.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="decrease:" candidateClass="UIButton"/>
+                <relationship kind="action" name="handleSwipeLeft:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="handleSwipeRight:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="increase:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="decrease" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="increase" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="numberOfSidesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="polygonView" candidateClass="PolygonView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
