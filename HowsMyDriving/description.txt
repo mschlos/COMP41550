@@ -1,0 +1,48 @@
+Ruaidhri Hallinan, 11277084, 
+RuaidhriHallinan@gmail.com, ruaidhri.hallinan@ucdconnect.ie
+
+Original proposal email :)
+
+##########################################################################################
+
+Hi Genome!
+Please consider this email my proposal for my Mobile Applications Development app.
+
+I am proposing to develop an app that will use the device accelerometer to rate the driving behaviour of the user. 
+(This is sort of a research topic for my company)
+
+The app will be called "Rate My Driving" or "How's My Driving".
+
+My idea is that when the user is in the car, and opens the app and clicks a "Start Journey" the accelerometer will measure g-forces and accelerometer statistics to rate the drivers journey. 
+
+The app will log sudden changes in g-foces and give the driver a rating out of 10 for their journey, perhaps with some advise on breaking or cornering and some fun slogans like 
+"Driving Miss Daisy was your favourite film!" or
+"You are more careful than my grandmother!" or 
+"Stop trying to corner like a house fly!" or
+"You drive like you stole the car!" or
+"You break like Michael Schumacher!" or
+"You are not playing Grand Theft Auto!" etc 
+
+I hope to implement about 3 screens
+- Welcome - Start Journey
+- Journey in Progress (maybe showing live exceptions and warnings)
+- Results Screen (showing results and final ratings) 
+
+Should the app be a success, a "nice to have" in the app would be to implement the sharing of results of the app on social media sites like FaceBook and Twitter, as a form of promotion:
+"I just scored 6/10 on the Rate My Driving app, can you do better (or worse)? - get the free app here <app store link>"
+
+Another "nice to have" would be to use the location and GPS hardware to measure speed and distance and show those diagnostics either live or in the results. 
+
+I chose this idea as it would be a help to me to gain the knowledge for future app developments for my company. 
+Is this app idea Ok?
+
+Kindest Regards,
+
+Ruaidhri
+11277084
+##########################################################################################
+
+Since I wrote the above proposal I was hoping to implement a few more things:
+- Setup iSimulator with my iPad / iPhone to simulate the changes in accelerometer
+- Log exceptions in driver behaviour (e.g. when x,y or z value raises above a threshold)
+- Calculate a scow out of 10 based on the results etc
