@@ -36,4 +36,12 @@
     [self.calcDisplay setText:[NSString stringWithFormat:@"%g", result]];
 }
 
+// noticing a bug here when adding two floating point numbers, it wont allow a decimal in the second number
+- (IBAction)pointPressed:(UIButton *)sender {
+    NSRange range = [self.calcDisplay.text rangeOfString:@"."];
+    if(range.location == NSNotFound) {
+            self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:@"."];
+    }
+    self.isInTheMiddleOfTypingSomething = YES;
+}
 @end
