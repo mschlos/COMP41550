@@ -64,8 +64,11 @@
     }
     else if ([@"C" isEqualToString:operation]) {
         NSLog(@"C : performingOperation!");
+        self.operand = 0;
+        self.waitingOperand = 0;
+        self.memory = 0;
+        self.waitingOperation = nil;
     }
-    
     else {
         [self performWaitingOperation];
         self.waitingOperation = operation;

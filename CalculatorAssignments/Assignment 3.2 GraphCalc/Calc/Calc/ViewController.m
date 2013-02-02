@@ -14,7 +14,8 @@
 @synthesize calcDisplay = _calcDisplay;
 @synthesize isInTheMiddleOfTypingSomething = _isInTheMiddleOfTypingSomething;
 
-- (IBAction)digitPressed:(UIButton *)sender{
+- (IBAction)digitPressed:(UIButton *)sender {
+    NSLog(@"digitPressed!");
     NSString *digit = sender.titleLabel.text;
     if(self.isInTheMiddleOfTypingSomething)
         self.calcDisplay.text =
@@ -25,7 +26,8 @@
     }
 }
 
-- (IBAction)operationPressed:(UIButton *)sender{
+- (IBAction)operationPressed:(UIButton *)sender {
+    NSLog(@"operationPressed!");
     if(self.isInTheMiddleOfTypingSomething) {
         self.calcModel.operand = [self.calcDisplay.text doubleValue];
         self.isInTheMiddleOfTypingSomething = NO;
@@ -38,6 +40,7 @@
 
 // noticing a bug here when adding two floating point numbers, it wont allow a decimal in the second number
 - (IBAction)pointPressed:(UIButton *)sender {
+    NSLog(@"pointPressed!");
     NSRange range = [self.calcDisplay.text rangeOfString:@"."];
     if(range.location == NSNotFound) {
             self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:@"."];
