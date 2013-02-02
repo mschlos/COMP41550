@@ -28,6 +28,11 @@
     else if ([@"cos" isEqualToString:operation]) {
         NSLog(@"cos : performingOperation!");
     }
+    // including tangent button, even though its not asked for
+    // sin and cos dont look right without tan :p
+    else if ([@"tan" isEqualToString:operation]) {
+        NSLog(@"tan : performingOperation!");
+    }
     else if ([@"1/x" isEqualToString:operation]) {
         NSLog(@"1/x : performingOperation!");
     }
