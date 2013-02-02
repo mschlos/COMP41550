@@ -14,10 +14,23 @@
 @synthesize operand = _operand;
 
 - (double) performOperation:(NSString *)operation {
-    if([operation isEqual:@"sqrt"])
+    if([operation isEqual:@"sqrt"]) {
+        NSLog(@"sqrt : performingOperation!");
         self.operand = sqrt(self.operand);
-    else if ([@"+/-" isEqualToString:operation])
+    }
+    else if ([@"+/-" isEqualToString:operation]) {
+        NSLog(@"+/- : performingOperation!");
         self.operand = -self.operand;
+    }
+    else if ([@"sin" isEqualToString:operation]) {
+        NSLog(@"sin : performingOperation!");
+    }
+    else if ([@"cos" isEqualToString:operation]) {
+        NSLog(@"cos : performingOperation!");
+    }
+    else if ([@"1/x" isEqualToString:operation]) {
+        NSLog(@"1/x : performingOperation!");
+    }
     else {
         [self performWaitingOperation];
         self.waitingOperation = operation;
@@ -28,13 +41,21 @@
 
 - (void) performWaitingOperation
 {
-    if([@"+" isEqualToString:self.waitingOperation])
+    if([@"+" isEqualToString:self.waitingOperation]) {
+        NSLog(@"+ : performingWaitingOperation!");
         self.operand = self.waitingOperand + self.operand;
-    else if ([@"-" isEqualToString:self.waitingOperation])
+    }
+    else if ([@"-" isEqualToString:self.waitingOperation]) {
+        NSLog(@"- : performingWaitingOperation!");
         self.operand = self.waitingOperand - self.operand;
-    else if ([@"*" isEqualToString:self.waitingOperation])
+    }
+    else if ([@"*" isEqualToString:self.waitingOperation]) {
+        NSLog(@"* : performingWaitingOperation!");
         self.operand = self.waitingOperand * self.operand;
-    else if ([@"/" isEqualToString:self.waitingOperation])
+    }
+    else if ([@"/" isEqualToString:self.waitingOperation]) {
+        NSLog(@"/ : performingWaitingOperation!");
         if(self.operand)self.operand = self.waitingOperand / self.operand;
+    }
 }
 @end
