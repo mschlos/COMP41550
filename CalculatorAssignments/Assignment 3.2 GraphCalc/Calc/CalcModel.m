@@ -15,6 +15,7 @@
 @synthesize memory = _memory;
 
 - (double) performOperation:(NSString *)operation {
+    
     if([operation isEqual:@"sqrt"]) {
         NSLog(@"sqrt : performingOperation!");
         self.operand = sqrt(self.operand);
@@ -79,6 +80,7 @@
 
 - (void) performWaitingOperation
 {
+    
     if([@"+" isEqualToString:self.waitingOperation]) {
         NSLog(@"+ : performingWaitingOperation!");
         self.operand = self.waitingOperand + self.operand;
@@ -93,7 +95,7 @@
     }
     else if ([@"/" isEqualToString:self.waitingOperation]) {
         NSLog(@"/ : performingWaitingOperation!");
-        if(self.operand)self.operand = self.waitingOperand / self.operand;
+            if(self.operand)self.operand = self.waitingOperand / self.operand;
     }
 }
 @end

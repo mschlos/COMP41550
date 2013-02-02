@@ -17,6 +17,29 @@
 - (IBAction)digitPressed:(UIButton *)sender {
     NSLog(@"digitPressed!");
     NSString *digit = sender.titleLabel.text;
+    
+    //This might need a tidy up 
+    if([digit isEqual:@"0"] && [self.calcModel.waitingOperation isEqual:@"/"]){
+            NSLog(@"digit: %@ ", digit);
+            NSLog(@"operand: %@ ", self.calcModel.waitingOperation);
+            // validation of dividing by 1 UIAlertView example
+            
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Invalid"
+                                  message: @"You cant divide by 0!"
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        
+        // UILabel example
+        self.errorDisplay.text = @"You cant divide by 0!";
+    }
+    else {
+        self.errorDisplay.text = @"";
+        self.errorDisplay = nil;
+    }
+
     if(self.isInTheMiddleOfTypingSomething)
         self.calcDisplay.text =
         [self.calcDisplay.text stringByAppendingString:digit];
