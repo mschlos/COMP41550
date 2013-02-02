@@ -48,6 +48,23 @@
             self.operand = inversion;
         }
     }
+    
+    else if ([@"STO" isEqualToString:operation]) {
+        NSLog(@"STO : performingOperation!");
+        //Some var = self.operand;
+    }
+    else if ([@"RCL" isEqualToString:operation]) {
+        NSLog(@"RCL : performingOperation!");
+        //self.operand = some var;
+    }
+    else if ([@"M+" isEqualToString:operation]) {
+        NSLog(@"M+ : performingOperation!");
+        //some var = some var + self.operand?
+    }
+    else if ([@"C" isEqualToString:operation]) {
+        NSLog(@"C : performingOperation!");
+    }
+    
     else {
         [self performWaitingOperation];
         self.waitingOperation = operation;
