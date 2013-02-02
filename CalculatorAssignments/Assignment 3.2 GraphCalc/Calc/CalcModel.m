@@ -24,17 +24,29 @@
     }
     else if ([@"sin" isEqualToString:operation]) {
         NSLog(@"sin : performingOperation!");
+        self.operand = sin(self.operand);
     }
     else if ([@"cos" isEqualToString:operation]) {
         NSLog(@"cos : performingOperation!");
+        self.operand = cos(self.operand);
     }
     // including tangent button, even though its not asked for
     // sin and cos dont look right without tan :p
     else if ([@"tan" isEqualToString:operation]) {
         NSLog(@"tan : performingOperation!");
+        self.operand = tan(self.operand);
     }
     else if ([@"1/x" isEqualToString:operation]) {
         NSLog(@"1/x : performingOperation!");
+        
+        double inversion = 1/self.operand;
+        if(inversion == INFINITY) {
+            NSLog(@"Infinity baby - do nothing");
+        }
+        else {
+            NSLog(@"%f : inverted!", inversion);
+            self.operand = inversion;
+        }
     }
     else {
         [self performWaitingOperation];
