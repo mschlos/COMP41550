@@ -13,4 +13,6 @@
 @property (nonatomic) double waitingOperand;
 @property (nonatomic, strong) NSString *waitingOperation;
 - (double) performOperation:(NSString *)operation;
+@property (nonatomic) double memory;
+
 @end

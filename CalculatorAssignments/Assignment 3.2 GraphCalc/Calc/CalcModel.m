@@ -12,6 +12,7 @@
 @synthesize waitingOperand = _waitingOperand;
 @synthesize waitingOperation = _waitingOperation;
 @synthesize operand = _operand;
+@synthesize memory = _memory;
 
 - (double) performOperation:(NSString *)operation {
     if([operation isEqual:@"sqrt"]) {
@@ -51,15 +52,15 @@
     
     else if ([@"STO" isEqualToString:operation]) {
         NSLog(@"STO : performingOperation!");
-        //Some var = self.operand;
+        self.memory = self.operand;
     }
     else if ([@"RCL" isEqualToString:operation]) {
         NSLog(@"RCL : performingOperation!");
-        //self.operand = some var;
+        self.operand = self.memory;
     }
     else if ([@"M+" isEqualToString:operation]) {
         NSLog(@"M+ : performingOperation!");
-        //some var = some var + self.operand?
+        self.memory = self.memory + self.operand;
     }
     else if ([@"C" isEqualToString:operation]) {
         NSLog(@"C : performingOperation!");
