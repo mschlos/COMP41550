@@ -75,6 +75,11 @@
         //self.memory = 0;
         self.waitingOperation = nil;
     }
+    //Pi button
+    else if ([@"π" isEqualToString:operation]) {
+        NSLog(@"π : performingOperation!");
+        self.operand = M_PI;
+    }
     else {
         [self performWaitingOperation];
         self.waitingOperation = operation;

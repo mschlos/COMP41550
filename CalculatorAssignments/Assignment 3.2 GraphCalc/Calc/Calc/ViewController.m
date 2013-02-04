@@ -18,7 +18,7 @@
     NSLog(@"digitPressed!");
     NSString *digit = sender.titleLabel.text;
     
-    //This might need a tidy up 
+    //This might need a tidy up
     if([digit isEqual:@"0"] && [self.calcModel.waitingOperation isEqual:@"/"]){
             NSLog(@"digit: %@ ", digit);
             NSLog(@"operand: %@ ", self.calcModel.waitingOperation);
@@ -33,11 +33,7 @@
             [alert show];
         
         // UILabel example
-        self.errorDisplay.text = @"You cant divide by 0!";
-    }
-    else {
-        self.errorDisplay.text = @"";
-        self.errorDisplay = nil;
+        //self.errorDisplay.text = @"Cant divide by 0!";
     }
 
     if(self.isInTheMiddleOfTypingSomething)
