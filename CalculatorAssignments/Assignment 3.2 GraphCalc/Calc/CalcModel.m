@@ -63,11 +63,16 @@
         NSLog(@"M+ : performingOperation!");
         self.memory = self.memory + self.operand;
     }
+    //Clear memory only
+    else if ([@"MC" isEqualToString:operation]) {
+        NSLog(@"MC : performingOperation!");
+        self.memory = 0;
+    }
     else if ([@"C" isEqualToString:operation]) {
         NSLog(@"C : performingOperation!");
         self.operand = 0;
         self.waitingOperand = 0;
-        self.memory = 0;
+        //self.memory = 0;
         self.waitingOperation = nil;
     }
     else {

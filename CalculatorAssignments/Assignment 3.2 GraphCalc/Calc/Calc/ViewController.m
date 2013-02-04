@@ -70,4 +70,18 @@
     }
     self.isInTheMiddleOfTypingSomething = YES;
 }
+
+- (IBAction)backspacePressed:(UIButton *)sender {
+    
+    if ( [self.calcDisplay.text isEqualToString:@""]
+        || [self.calcDisplay.text isEqualToString:@"0"]) {
+        
+        self.calcDisplay.text = @"0";
+        self.isInTheMiddleOfTypingSomething = NO;
+    }
+    else {
+        self.calcDisplay.text =[self.calcDisplay.text substringToIndex: [self.calcDisplay.text length] - 1];
+        self.isInTheMiddleOfTypingSomething = YES;
+    }
+}
 @end
