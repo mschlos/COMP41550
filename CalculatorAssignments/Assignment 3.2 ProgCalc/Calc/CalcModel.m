@@ -112,6 +112,31 @@
 
 // new method for part 2 of assignment 3 to set variables as operands
 - (void) setVariableAsOperand: (NSString *) varName {
+    
 }
+
+
++ (double) evaluateExpression: (id) anExpression
+          usingVariableValues: (NSDictionary *) variables {
+
+}
+
+
++ (NSSet *) variablesInExpression: (id) anExpression {
+
+}
+
+- (NSString *) descriptionOfExpression:(id)anExpression{
+    
+}
+
++ (id) propertyListForExpression:(id)anExpression {
+    
+}
+
+- (id) expressionForPropertyList:(id)propertyList {
+    
+}
+
 
 @end
