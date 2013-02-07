@@ -14,12 +14,16 @@
 @property (nonatomic, strong) NSString *waitingOperation;
 @property (readonly,strong) id expression;
 @property (nonatomic) double memory;
+
 - (double) performOperation:(NSString *)operation;
 - (void)setVariableAsOperand:(NSString *)variableName;
+
 + (double)evaluateExpression:(id)anExpression
          usingVariableValues:(NSDictionary *)variables;
+
 + (NSSet *)variablesInExpression:(id)anExpression;
 - (NSString *)descriptionOfExpression:(id)anExpression;
+
 + (id)propertyListForExpression:(id)anExpression;
 - (id)expressionForPropertyList:(id)propertyList;
 

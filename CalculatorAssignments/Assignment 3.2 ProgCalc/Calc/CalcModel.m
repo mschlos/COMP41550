@@ -13,6 +13,7 @@
 @synthesize waitingOperation = _waitingOperation;
 @synthesize operand = _operand;
 @synthesize memory = _memory;
+@synthesize expression = _expression;
 
 - (double) performOperation:(NSString *)operation {
     
@@ -108,4 +109,9 @@
             if(self.operand)self.operand = self.waitingOperand / self.operand;
     }
 }
+
+// new method for part 2 of assignment 3 to set variables as operands
+- (void) setVariableAsOperand: (NSString *) varName {
+}
+
 @end
