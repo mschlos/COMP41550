@@ -80,4 +80,13 @@
         self.isInTheMiddleOfTypingSomething = YES;
     }
 }
+
+//Action for variable buttons being pressed
+- (IBAction)variablePressed:(UIButton *)sender {
+    NSLog(@"variablePressed!");
+    NSString *var = sender.titleLabel.text;
+    [[self calcModel] setVariableAsOperand:var];
+    self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:var];
+}
+
 @end

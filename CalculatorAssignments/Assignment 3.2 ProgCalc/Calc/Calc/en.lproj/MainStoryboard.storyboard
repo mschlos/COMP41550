@@ -373,8 +373,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="yO5-3c-cOi"/>
-                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="UGF-jD-8ga"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="DNb-T0-hcv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjm-vR-7Q6">
@@ -387,8 +386,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="zgL-Yj-hcg"/>
-                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="Myk-PY-7AZ"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="K54-m2-Cw7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjR-bF-WkG">
@@ -401,8 +399,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="Pce-uO-KeJ"/>
-                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="xUH-Gi-1gv"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="cei-uw-hnR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-sG-ibI">
@@ -415,8 +412,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="7VK-9k-tvj"/>
-                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="4IC-2N-DO8"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="ycy-e4-smQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBi-hY-neA">
@@ -606,7 +602,7 @@
                 <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="operationPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="pointPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="variablePressed:"/>
+                <relationship kind="action" name="variablePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="calcDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="calcModel" candidateClass="CalcModel"/>
                 <relationship kind="outlet" name="errorDisplay" candidateClass="UILabel"/>

@@ -16,7 +16,7 @@
 @property (nonatomic) double memory;
 
 - (double) performOperation:(NSString *)operation;
-- (void)setVariableAsOperand:(NSString *)variableName;
+- (void) setVariableAsOperand:(NSString *)variableName;
 
 + (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables;
 
