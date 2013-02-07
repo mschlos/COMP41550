@@ -374,6 +374,7 @@
                                 </state>
                                 <connections>
                                     <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="yO5-3c-cOi"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="Wy1-jR-Y40"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjm-vR-7Q6">
@@ -387,6 +388,7 @@
                                 </state>
                                 <connections>
                                     <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="zgL-Yj-hcg"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="huF-O3-jlr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjR-bF-WkG">
@@ -400,6 +402,7 @@
                                 </state>
                                 <connections>
                                     <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="Pce-uO-KeJ"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="xiE-9W-WRo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-sG-ibI">
@@ -413,6 +416,7 @@
                                 </state>
                                 <connections>
                                     <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="7VK-9k-tvj"/>
+                                    <action selector="variablePressed:" destination="2" eventType="touchUpInside" id="y34-V4-NZl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBi-hY-neA">
@@ -602,6 +606,7 @@
                 <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="operationPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="pointPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="variablePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="calcDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="calcModel" candidateClass="CalcModel"/>
                 <relationship kind="outlet" name="errorDisplay" candidateClass="UILabel"/>

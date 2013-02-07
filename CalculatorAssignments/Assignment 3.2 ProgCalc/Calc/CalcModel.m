@@ -112,7 +112,9 @@
 
 // new method for part 2 of assignment 3 to set variables as operands
 - (void) setVariableAsOperand: (NSString *) varName {
-    
+    //Modify your ViewController to add a target-action method which calls setVariableAsOperand:
+    //above with the title of the button as the argument.
+    //Add at least 3 different variable buttons (e.g. @“x”, @“a” and @“b”) in Interface Builder and hook them up to this method.
 }
 
 
