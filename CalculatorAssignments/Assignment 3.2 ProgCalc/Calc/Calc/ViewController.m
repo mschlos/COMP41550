@@ -89,4 +89,8 @@
     self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:var];
 }
 
+- (IBAction)solvePressed:(UIButton *)sender {
+    
+}
+
 @end
