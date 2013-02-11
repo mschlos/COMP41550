@@ -18,4 +18,5 @@
 - (IBAction)pointPressed:(UIButton *)sender;
 - (IBAction)backspacePressed:(UIButton *)sender;
 - (IBAction)variablePressed:(UIButton *)sender;
+- (IBAction)solvePressed:(UIButton *)sender;
 @end

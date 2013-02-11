@@ -117,17 +117,18 @@
     //Add at least 3 different variable buttons (e.g. @“x”, @“a” and @“b”) in Interface Builder and hook them up to this method.
     NSLog(@"%@", varName);
     NSLog(@"/ : setVariableAsOperand!");
+    
+    [self.expression addObject:[NSString stringWithFormat:@"$%@", varName]];
 }
 
 
 + (double) evaluateExpression: (id) anExpression
           usingVariableValues: (NSDictionary *) variables {
-
 }
 
-
+    
 + (NSSet *) variablesInExpression: (id) anExpression {
-
+        
 }
 
 - (NSString *) descriptionOfExpression:(id)anExpression{
