@@ -81,16 +81,24 @@
     }
 }
 
+- (IBAction)solvePressed:(UIButton *)sender {
+    NSLog(@"solvePressed");
+    
+    [self.calcModel pushOperand:[self.calcDisplay.text doubleValue]];
+    self.isInTheMiddleOfTypingSomething = NO;
+}
+
 //Action for variable buttons being pressed
 - (IBAction)variablePressed:(UIButton *)sender {
     NSLog(@"variablePressed!");
     NSString *var = sender.titleLabel.text;
-    [[self calcModel] setVariableAsOperand:var];
-    self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:var];
-}
-
-- (IBAction)solvePressed:(UIButton *)sender {
+    NSLog(@"%@", var);
     
+    [[self calcModel] setVariableAsOperand:var];
+    
+    self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:var];
+    
+    [[self calcModel] pushVariable:var];
 }
 
 @end

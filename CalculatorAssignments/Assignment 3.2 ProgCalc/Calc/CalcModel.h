@@ -14,6 +14,10 @@
 @property (nonatomic, strong) NSString *waitingOperation;
 @property (readonly,strong) id expression;
 @property (nonatomic) double memory;
+@property (nonatomic, strong) NSMutableArray *programStack;
+
+- (void)pushOperand:(double)operand;
+- (void)pushVariable:(NSString *)variable;
 
 - (double) performOperation:(NSString *)operation;
 - (void) setVariableAsOperand:(NSString *)variableName;

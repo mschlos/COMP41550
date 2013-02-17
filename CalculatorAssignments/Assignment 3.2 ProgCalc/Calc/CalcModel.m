@@ -7,6 +7,7 @@
 //
 
 #import "CalcModel.h"
+
 @implementation CalcModel
 
 @synthesize waitingOperand = _waitingOperand;
@@ -14,6 +15,7 @@
 @synthesize operand = _operand;
 @synthesize memory = _memory;
 @synthesize expression = _expression;
+@synthesize programStack = _programStack;
 
 - (double) performOperation:(NSString *)operation {
     
@@ -124,24 +126,58 @@
 
 + (double) evaluateExpression: (id) anExpression
           usingVariableValues: (NSDictionary *) variables {
-}
-
     
-+ (NSSet *) variablesInExpression: (id) anExpression {
+    // create a local instance for CalcModel
+    CalcModel *model = [[CalcModel alloc] init];
+    for (id obj in anExpression) {
         
+        // check for number
+        if ([obj isKindOfClass:[NSNumber class]]) {
+            model.operand = [obj doubleValue];
+        } else if ([obj isKindOfClass:[NSString class]] && ([obj length] == 2)) {
+            // check for variable
+            model.operand = [[variables objectForKey:obj] doubleValue];
+        } else {
+            // check for operator
+            [model performOperation:obj];
+        }
+    }
+    
+    double value = model.operand;
+    // release local instance of calculator brain
+    return value;
 }
 
-- (NSString *) descriptionOfExpression:(id)anExpression{
+- (void) pushOperand:(double)operand
+{
+    NSLog(@"pushOperand");
     
+    // adding operand to stack
+    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
-+ (id) propertyListForExpression:(id)anExpression {
+- (void) pushVariable:(NSString *)variable {
+    NSLog(@"pushVariable");
     
+    //adding var to stack
+    [self.programStack addObject:variable];
 }
-
-- (id) expressionForPropertyList:(id)propertyList {
     
-}
+//+ (NSSet *) variablesInExpression: (id) anExpression {
+//    //return anExpression;
+//}
+//
+//- (NSString *) descriptionOfExpression:(id)anExpression{
+//    //return anExpression;
+//}
+//
+//+ (id) propertyListForExpression:(id)anExpression {
+//    //return anExpression;
+//}
+//
+//- (id) expressionForPropertyList:(id)propertyList {
+//    //return propertyList;
+//}
 
 
 @end
