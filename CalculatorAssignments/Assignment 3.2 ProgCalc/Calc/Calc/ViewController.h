@@ -12,13 +12,13 @@
 @interface ViewController : UIViewController
 @property (nonatomic, strong) IBOutlet CalcModel *calcModel;
 @property (nonatomic,weak) IBOutlet UILabel *calcDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *histDisplay;
+
 @property (nonatomic) BOOL isInTheMiddleOfTypingSomething;
 
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)operationPressed:(UIButton *)sender;
-- (IBAction)pointPressed:(UIButton *)sender;
-- (IBAction)backspacePressed:(UIButton *)sender;
-- (IBAction)variablePressed:(UIButton *)sender;
 - (IBAction)solvePressed:(UIButton *)sender;
+- (IBAction)variablePressed:(UIButton *)sender;
 
 @end

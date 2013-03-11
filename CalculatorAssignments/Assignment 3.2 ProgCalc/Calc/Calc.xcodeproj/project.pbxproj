@@ -38,8 +38,8 @@
 		F1499CBC16B991BB0083E829 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F1499CBE16B991BB0083E829 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F1499CBF16B991BB0083E829 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F1499CC616B9921F0083E829 /* CalcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcModel.h; sourceTree = "<group>"; };
-		F1499CC716B9921F0083E829 /* CalcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcModel.m; sourceTree = "<group>"; };
+		F1499CC616B9921F0083E829 /* CalcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcModel.h; sourceTree = SOURCE_ROOT; };
+		F1499CC716B9921F0083E829 /* CalcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +59,6 @@
 		F1499C9416B991BB0083E829 = {
 			isa = PBXGroup;
 			children = (
-				F1499CC616B9921F0083E829 /* CalcModel.h */,
-				F1499CC716B9921F0083E829 /* CalcModel.m */,
 				F1499CA916B991BB0083E829 /* Calc */,
 				F1499CA216B991BB0083E829 /* Frameworks */,
 				F1499CA016B991BB0083E829 /* Products */,
@@ -88,6 +86,8 @@
 		F1499CA916B991BB0083E829 /* Calc */ = {
 			isa = PBXGroup;
 			children = (
+				F1499CC716B9921F0083E829 /* CalcModel.m */,
+				F1499CC616B9921F0083E829 /* CalcModel.h */,
 				F1499CB216B991BB0083E829 /* AppDelegate.h */,
 				F1499CB316B991BB0083E829 /* AppDelegate.m */,
 				F1499CBB16B991BB0083E829 /* MainStoryboard.storyboard */,
@@ -298,6 +298,7 @@
 				F1499CC516B991BB0083E829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

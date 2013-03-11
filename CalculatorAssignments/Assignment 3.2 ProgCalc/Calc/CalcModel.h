@@ -9,25 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @interface CalcModel : NSObject
-@property (nonatomic) double operand;
-@property (nonatomic) double waitingOperand;
-@property (nonatomic, strong) NSString *waitingOperation;
-@property (readonly,strong) id expression;
-@property (nonatomic) double memory;
-@property (nonatomic, strong) NSMutableArray *programStack;
 
-- (void)pushOperand:(double)operand;
-- (void)pushVariable:(NSString *)variable;
+@property (readonly,strong) id expression;
+@property (nonatomic, strong) NSMutableArray *operandStack;
+
+- (void) pushOperand:(double)operand;
+- (void) pushVariable:(NSString *)variable;
 
 - (double) performOperation:(NSString *)operation;
 - (void) setVariableAsOperand:(NSString *)variableName;
 
-+ (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables;
++ (double) evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables;
 
-+ (NSSet *)variablesInExpression:(id)anExpression;
-- (NSString *)descriptionOfExpression:(id)anExpression;
-
-+ (id)propertyListForExpression:(id)anExpression;
-- (id)expressionForPropertyList:(id)propertyList;
++ (NSSet *) variablesInExpression:(id)anExpression;
++ (NSString *) descriptionOfExpression:(id)anExpression;
 
 @end

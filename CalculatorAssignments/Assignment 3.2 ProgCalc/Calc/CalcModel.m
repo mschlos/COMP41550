@@ -8,108 +8,57 @@
 
 #import "CalcModel.h"
 
+@interface CalcModel()
+
+@property (nonatomic, strong) NSDictionary *variables;
+
+@end
+
 @implementation CalcModel
 
-@synthesize waitingOperand = _waitingOperand;
-@synthesize waitingOperation = _waitingOperation;
-@synthesize operand = _operand;
-@synthesize memory = _memory;
+@synthesize variables =  _variables; 
+@synthesize operandStack = _operandStack;
 @synthesize expression = _expression;
-@synthesize programStack = _programStack;
 
-- (double) performOperation:(NSString *)operation {
-    
-    if([operation isEqual:@"sqrt"]) {
-        NSLog(@"sqrt : performingOperation!");
-        self.operand = sqrt(self.operand);
-    }
-    else if ([@"+/-" isEqualToString:operation]) {
-        NSLog(@"+/- : performingOperation!");
-        self.operand = -self.operand;
-    }
-    else if ([@"sin" isEqualToString:operation]) {
-        NSLog(@"sin : performingOperation!");
-        self.operand = sin(self.operand);
-    }
-    else if ([@"cos" isEqualToString:operation]) {
-        NSLog(@"cos : performingOperation!");
-        self.operand = cos(self.operand);
-    }
-    // including tangent button, even though its not asked for
-    // sin and cos dont look right without tan :p
-    else if ([@"tan" isEqualToString:operation]) {
-        NSLog(@"tan : performingOperation!");
-        self.operand = tan(self.operand);
-    }
-    else if ([@"1/x" isEqualToString:operation]) {
-        NSLog(@"1/x : performingOperation!");
-        
-        double inversion = 1/self.operand;
-        if(inversion == INFINITY) {
-            NSLog(@"Infinity baby - do nothing");
-        }
-        else {
-            NSLog(@"%f : inverted!", inversion);
-            self.operand = inversion;
-        }
-    }
-    
-    else if ([@"STO" isEqualToString:operation]) {
-        NSLog(@"STO : performingOperation!");
-        self.memory = self.operand;
-    }
-    else if ([@"RCL" isEqualToString:operation]) {
-        NSLog(@"RCL : performingOperation!");
-        self.operand = self.memory;
-    }
-    else if ([@"M+" isEqualToString:operation]) {
-        NSLog(@"M+ : performingOperation!");
-        self.memory = self.memory + self.operand;
-    }
-    //Clear memory only
-    else if ([@"MC" isEqualToString:operation]) {
-        NSLog(@"MC : performingOperation!");
-        self.memory = 0;
-    }
-    else if ([@"C" isEqualToString:operation]) {
-        NSLog(@"C : performingOperation!");
-        self.operand = 0;
-        self.waitingOperand = 0;
-        //self.memory = 0;
-        self.waitingOperation = nil;
-    }
-    //Pi button
-    else if ([@"π" isEqualToString:operation]) {
-        NSLog(@"π : performingOperation!");
-        self.operand = M_PI;
-    }
-    else {
-        [self performWaitingOperation];
-        self.waitingOperation = operation;
-        self.waitingOperand = self.operand;
-    }
-    return self.operand;
+#pragma mark - Getters
+- (NSMutableArray *)operandStack {
+    if (_operandStack == nil)
+        _operandStack = [[NSMutableArray alloc] init];
+    return _operandStack;
 }
 
-- (void) performWaitingOperation
-{
+- (id) expression {
+    return [self.operandStack copy];
+}
+
+- (void) pushOperand:(double)operand {
+    NSLog(@"pushOperand to operandStack: %f", operand);
+    // adding operand to stack
+    [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
+}
+
+- (void) pushVariable:(NSString *)variable {
+    NSLog(@"pushVariable to operandStack: %@", variable);
+    //adding var to stack
+    [self.operandStack addObject:variable];
+}
+
+// perform operation
+- (double) performOperation:(NSString *)operation {
+    NSLog(@"performOperation: %@", operation);
     
-    if([@"+" isEqualToString:self.waitingOperation]) {
-        NSLog(@"+ : performingWaitingOperation!");
-        self.operand = self.waitingOperand + self.operand;
-    }
-    else if ([@"-" isEqualToString:self.waitingOperation]) {
-        NSLog(@"- : performingWaitingOperation!");
-        self.operand = self.waitingOperand - self.operand;
-    }
-    else if ([@"*" isEqualToString:self.waitingOperation]) {
-        NSLog(@"* : performingWaitingOperation!");
-        self.operand = self.waitingOperand * self.operand;
-    }
-    else if ([@"/" isEqualToString:self.waitingOperation]) {
-        NSLog(@"/ : performingWaitingOperation!");
-            if(self.operand)self.operand = self.waitingOperand / self.operand;
-    }
+    double det = [CalcModel runProgram:self.expression];
+    
+    NSLog(@"Det: %f", det);
+    
+    return det;
+}
+
+// running program with nil
++ (double)runProgram:(id)program {
+    //    NSLog(@"runProgram:%@", program);
+    
+    return [self evaluateExpression:program usingVariableValues:nil];
 }
 
 // new method for part 2 of assignment 3 to set variables as operands
@@ -117,67 +66,149 @@
     //Modify your ViewController to add a target-action method which calls setVariableAsOperand:
     //above with the title of the button as the argument.
     //Add at least 3 different variable buttons (e.g. @“x”, @“a” and @“b”) in Interface Builder and hook them up to this method.
-    NSLog(@"%@", varName);
-    NSLog(@"/ : setVariableAsOperand!");
+    //    NSLog(@"/ : setVariableAsOperand: %@", varName);
     
     [self.expression addObject:[NSString stringWithFormat:@"$%@", varName]];
 }
 
-
 + (double) evaluateExpression: (id) anExpression
           usingVariableValues: (NSDictionary *) variables {
     
-    // create a local instance for CalcModel
-    CalcModel *model = [[CalcModel alloc] init];
-    for (id obj in anExpression) {
+    NSLog(@"evaluateExpression - anExpression:/%@/", anExpression);
+    NSLog(@"evaluateExpression - using Variables:/%@/", variables);
+    
+    if ([anExpression isKindOfClass:[NSArray class]]) {
         
-        // check for number
-        if ([obj isKindOfClass:[NSNumber class]]) {
-            model.operand = [obj doubleValue];
-        } else if ([obj isKindOfClass:[NSString class]] && ([obj length] == 2)) {
-            // check for variable
-            model.operand = [[variables objectForKey:obj] doubleValue];
+        NSMutableArray *stack= [anExpression mutableCopy];
+        //        NSLog(@"evaluateExpression - stack: %@", stack);
+        
+        for (int i=0; i < [stack count]; i++) {
+            id obj = [stack objectAtIndex:i];
+            //            NSLog(@"evaluateExpression - obj: %@", obj);
+            if ([obj isKindOfClass:[NSString class]] && ![self isAnOperation:obj]) {
+                id value = [variables objectForKey:obj];
+                //                NSLog(@"evaluateExpression - value: %@", value);
+                if (![value isKindOfClass:[NSNumber class]])
+                    value = [NSNumber numberWithInt:0]; // if no value substitute zero
+                //                    NSLog(@"evaluateExpression - value int: %@", value);
+                // replace program variable
+                [stack replaceObjectAtIndex:i withObject:value];
+            }
+        }
+    
+        return [self performCalculationsOnTheStack:stack];
+    }
+    else {
+        return 0;
+    }
+}
+
++ (double)performCalculationsOnTheStack:(NSMutableArray *) stack {
+    NSLog(@"performCalculationsOnTheStack");
+    
+    double result = 0;
+    NSString *operation = @"";
+    
+    for (int i=0; i < [stack count]; i++) {
+        id topStack = [stack objectAtIndex:i];
+        if ([topStack isKindOfClass:[NSNumber class]]) {
+            if(![@"" isEqualToString:operation]) {
+                if ([operation isEqualToString:@"/"]){
+                    result = result / [topStack doubleValue];
+                } else if ([operation isEqualToString:@"+"]) {
+                    result = result + [topStack doubleValue];
+                } else if ([operation isEqualToString:@"-"]) {
+                    result = result - [topStack doubleValue];
+                } else if ([operation isEqualToString:@"*"]) {
+                    result = result * [topStack doubleValue];
+                } else if ([operation isEqualToString:@"sqrt"]) {
+                    result = sqrt([topStack doubleValue]);
+                } else if ([operation isEqualToString:@"+/-"]) {
+                    result = -[topStack doubleValue];
+                } else if ([operation isEqualToString:@"sin"]) {
+                    result = sin([topStack doubleValue]);
+                } else if ([operation isEqualToString:@"cos"]) {
+                    result = cos([topStack doubleValue]);
+                } else if ([operation isEqualToString:@"π"]) {
+                    result = M_PI;
+                }
+                
+            } else {
+                result = [topStack doubleValue];;
+            }
+        } else if ([topStack isKindOfClass:[NSString class]] && [self isAnOperation:topStack] ) {
+            operation = topStack;
         } else {
-            // check for operator
-            [model performOperation:obj];
+            //replace variable 
+            if ([topStack isEqualToString:@"a"]) {
+                if (result !=0) {
+                    result = result + 4;
+                } else {
+                    result = 4;
+                }
+            }
         }
     }
     
-    double value = model.operand;
-    // release local instance of calculator brain
-    return value;
+    return result;
 }
 
-- (void) pushOperand:(double)operand
-{
-    NSLog(@"pushOperand");
++ (NSSet *) variablesInExpression: (id) anExpression {
+    NSLog(@"variablesInExpression: %@", anExpression);
     
-    // adding operand to stack
-    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
+    NSMutableSet *variableSet = [[NSMutableSet alloc] init];
+    
+    for (id object in anExpression) {
+        
+        if ([object isKindOfClass:[NSString class]] && ![self isAnOperation:object]) {
+            
+            if ([object rangeOfString:@"$"].location != NSNotFound) {
+                
+                [variableSet addObject:[NSString stringWithFormat:@"%c",
+                                        [object characterAtIndex:1]]];
+            }
+        }
+    }
+    
+    if ([variableSet count] == 0) {
+        variableSet = nil;
+    }
+    return variableSet;
 }
 
-- (void) pushVariable:(NSString *)variable {
-    NSLog(@"pushVariable");
++ (NSString *) descriptionOfExpression: (id) anExpression {
+    NSLog(@"descriptionOfExpression %@", anExpression);
     
-    //adding var to stack
-    [self.programStack addObject:variable];
+    if (![self isValidExpression:anExpression]) return @"Invalid program!";
+    
+    NSMutableString *description = [[NSMutableString alloc] init];
+    
+    for (id object in anExpression) {
+        if (([object isKindOfClass:[NSString class]]) && ([object characterAtIndex:0] == '$')) {
+            [description appendString:[NSString stringWithFormat:@"%c", [object characterAtIndex:1]]];
+        } else {
+            [description appendString:[object description]];
+        }
+    }
+    NSLog(@"descriptionOfExpression - description: %@", description);
+    return description;
 }
-    
-//+ (NSSet *) variablesInExpression: (id) anExpression {
-//    //return anExpression;
-//}
-//
-//- (NSString *) descriptionOfExpression:(id)anExpression{
-//    //return anExpression;
-//}
-//
-//+ (id) propertyListForExpression:(id)anExpression {
-//    //return anExpression;
-//}
-//
-//- (id) expressionForPropertyList:(id)propertyList {
-//    //return propertyList;
-//}
 
+// checks operaton is Ok
++ (BOOL)isAnOperation:(NSString *) operation {
+    NSLog(@"isAnOperation: %@", operation);
+    NSSet *validOperations = [[NSSet alloc] initWithObjects:
+                              @"sqrt",@"sin",@"cos",@"1/x",@"π",@"+",@"-",@"*",@"/",
+                              nil];
+    
+    return [validOperations containsObject:operation];
+}
+
+// checks if anExpression is an array
++ (BOOL)isValidExpression:(id)anExpression {
+    NSLog(@"isValidExpression: %@", anExpression);
+    
+    return [anExpression isKindOfClass:[NSArray class]];
+}
 
 @end

@@ -7,98 +7,169 @@
 //
 
 #import "ViewController.h"
+#import "CalcModel.h"
+
+@interface ViewController ()
+@property (nonatomic) BOOL numberHasDecimalPoint;
+@property (nonatomic, strong) NSDictionary *testVariableValues;
+@property (nonatomic) double memory;
+@end
 
 @implementation ViewController
 
+@synthesize isInTheMiddleOfTypingSomething = _isInTheMiddleOfTypingSomething;
 @synthesize calcModel = _calcModel;
 @synthesize calcDisplay = _calcDisplay;
-@synthesize isInTheMiddleOfTypingSomething = _isInTheMiddleOfTypingSomething;
+
+@synthesize histDisplay = _histDisplay;
+@synthesize numberHasDecimalPoint = _numberHasDecimalPoint;
+@synthesize memory = _memory;
 
 - (IBAction)digitPressed:(UIButton *)sender {
-    NSLog(@"digitPressed!");
     NSString *digit = sender.titleLabel.text;
+    NSLog(@"digitPressed %@", digit);
     
-    //This might need a tidy up
-    if([digit isEqual:@"0"] && [self.calcModel.waitingOperation isEqual:@"/"]){
-            NSLog(@"digit: %@ ", digit);
-            NSLog(@"operand: %@ ", self.calcModel.waitingOperation);
-            // validation of dividing by 1 UIAlertView example
-            
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: @"Invalid"
-                                  message: @"You cant divide by 0!"
-                                  delegate: nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
-        
-        // UILabel example
-        //self.errorDisplay.text = @"Cant divide by 0!";
-    }
-
-    if(self.isInTheMiddleOfTypingSomething)
-        self.calcDisplay.text =
-        [self.calcDisplay.text stringByAppendingString:digit];
-    else {
-        [self.calcDisplay setText:digit];
-        self.isInTheMiddleOfTypingSomething = YES;
-    }
-}
-
-- (IBAction)operationPressed:(UIButton *)sender {
-    NSLog(@"operationPressed!");
     if(self.isInTheMiddleOfTypingSomething) {
-        self.calcModel.operand = [self.calcDisplay.text doubleValue];
-        self.isInTheMiddleOfTypingSomething = NO;
-    }
-    
-    NSString *operation = [[sender titleLabel] text];
-    double result = [[self calcModel] performOperation:operation];
-    [self.calcDisplay setText:[NSString stringWithFormat:@"%g", result]];
-}
-
-// noticing a bug here when adding two floating point numbers, it wont allow a decimal in the second number
-- (IBAction)pointPressed:(UIButton *)sender {
-    NSLog(@"pointPressed!");
-    NSRange range = [self.calcDisplay.text rangeOfString:@"."];
-    if(range.location == NSNotFound) {
-            self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:@"."];
-    }
-    self.isInTheMiddleOfTypingSomething = YES;
-}
-
-- (IBAction)backspacePressed:(UIButton *)sender {
-    
-    if ( [self.calcDisplay.text isEqualToString:@""]
-        || [self.calcDisplay.text isEqualToString:@"0"]) {
+        if ([digit isEqualToString:@"."]) {
+            if (self.numberHasDecimalPoint)
+                return;
+            else
+                self.numberHasDecimalPoint = YES;
+        }
+        self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:digit];
+    } else {
+        if ([digit isEqualToString:@"."]) {
+            self.calcDisplay.text = @"0.";
+            self.numberHasDecimalPoint = YES;
+        } else
+            self.calcDisplay.text = digit;
         
-        self.calcDisplay.text = @"0";
-        self.isInTheMiddleOfTypingSomething = NO;
-    }
-    else {
-        self.calcDisplay.text =[self.calcDisplay.text substringToIndex: [self.calcDisplay.text length] - 1];
         self.isInTheMiddleOfTypingSomething = YES;
     }
 }
 
-- (IBAction)solvePressed:(UIButton *)sender {
-    NSLog(@"solvePressed");
+
+- (IBAction)operationPressed:(UIButton *) operation {
     
+    NSLog(@"calcDisplay text: %@", self.calcDisplay.text);
+    
+    NSString *operator = [operation currentTitle];
+    
+    if(self.isInTheMiddleOfTypingSomething) {
+        [self innerSolve];
+    }
+    
+    // Performaning the Memory stuff here
+    NSLog(@"operationPressed %@", operator);
+    if ([operator isEqualToString:@"STO"]) {
+        NSLog(@"STO: ");
+        self.memory = [self.calcDisplay.text doubleValue];
+        NSLog(@"%f", self.memory);
+        
+    } else if ([operator isEqualToString:@"RCL"]) {
+        NSLog(@"RCL: ");
+        operator = [NSString stringWithFormat:@"%g", self.memory];
+        NSLog(@"%f", self.memory);
+        NSLog(@"operator: ");
+        NSLog(@"%@", operator);
+        
+    } else if ([operator isEqualToString:@"M+"]) {
+        NSLog(@"M+ ");
+        self.memory = self.memory + [self.calcDisplay.text doubleValue];
+        NSLog(@"%f", self.memory);
+        
+    } else if ([operator isEqualToString:@"MC"]) {
+        NSLog(@"MC ");
+        self.memory = 0;
+    }
+    else {
+        self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:operator];
+        [self.calcModel pushVariable:operator];
+    }
+}
+
+- (void)innerSolve {
     [self.calcModel pushOperand:[self.calcDisplay.text doubleValue]];
+    self.isInTheMiddleOfTypingSomething = NO;
+    
+    [self updateView];
+}
+
+- (IBAction)solvePressed:(UIButton *)sender  {
+    // Hard coding values for x, a and b
+    self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:-4], @"x",
+                               [NSNumber numberWithDouble:3], @"a",
+                               [NSNumber numberWithDouble:4], @"b", nil];
+    [self innerSolve];
+}
+
+- (IBAction)clearError {
+    NSLog(@"CE : clear Error");
+    if (self.isInTheMiddleOfTypingSomething) {
+        self.calcDisplay.text =[self.calcDisplay.text substringToIndex: [self.calcDisplay.text length] - 1];
+        
+        if ( [self.calcDisplay.text isEqualToString:@""]
+            || [self.calcDisplay.text isEqualToString:@"0"]
+            || [self.calcDisplay.text isEqualToString:@"-"]) {
+            
+            [self updateView];
+        }
+    } else {
+        [self removeLastItemFromStack];
+        [self updateView];
+    }
+}
+
+// remove the last item from stack
+- (void)removeLastItemFromStack {
+    // NSLog(@"removing object from stack");
+    [self.calcModel.operandStack removeLastObject];
+}
+
+- (IBAction)clear {
+    NSLog(@"CE : clear pressed");
+    
+    self.calcDisplay.text = @"0";
+    self.histDisplay.text = @"";
+    
     self.isInTheMiddleOfTypingSomething = NO;
 }
 
-//Action for variable buttons being pressed
 - (IBAction)variablePressed:(UIButton *)sender {
-    NSLog(@"variablePressed!");
-    NSString *var = sender.titleLabel.text;
+    NSString *var = sender.currentTitle;
     NSLog(@"%@", var);
     
-    [[self calcModel] setVariableAsOperand:var];
-    
-    self.calcDisplay.text = [self.calcDisplay.text stringByAppendingString:var];
-    
     [[self calcModel] pushVariable:var];
+}
+
+-(void) updateView {
+    NSLog(@"updateView expression:%@", self.calcModel.expression);
+    NSLog(@"updateView testVariableValues:%@", self.testVariableValues);
+    
+    double result = [CalcModel evaluateExpression:self.calcModel.expression usingVariableValues:self.testVariableValues];
+    
+    NSLog(@"updateView result:%f",result);
+    
+    NSString *resultString = [NSString stringWithFormat:@"%f", result];
+    
+    self.calcDisplay.text = resultString;
+    
+    // Update calc history label
+    self.histDisplay.text = [CalcModel descriptionOfExpression:self.calcModel.expression];
+    
+    self.isInTheMiddleOfTypingSomething = NO;
+}
+
+- (NSDictionary *)programVariableValues {
+    // Find variables in the current expression as array
+    NSLog(@"programVariableValues:");
+    
+    NSArray *variableArray =
+    [[CalcModel variablesInExpression:self.calcModel.expression] allObjects];
+    
+    NSLog(@"%@", variableArray);
+    return [self.testVariableValues dictionaryWithValuesForKeys:variableArray];
 }
 
 @end
