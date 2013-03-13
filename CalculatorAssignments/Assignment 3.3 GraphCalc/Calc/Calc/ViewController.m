@@ -33,14 +33,14 @@
 - (IBAction)graphPressed:(UIButton *)sender {
     
     if ([self graphViewController]) {
-        [[self graphViewController] setProgram:self.calcModel.expression];
+        [[self graphViewController] setExpression:self.calcModel.expression];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     GraphViewController *destVC = (GraphViewController *)segue.destinationViewController;
 
-    [destVC setProgram:self.calcModel.expression];
+    [destVC setExpression:self.calcModel.expression];
 }
 
 

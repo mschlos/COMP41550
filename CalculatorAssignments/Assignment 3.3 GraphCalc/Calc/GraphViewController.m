@@ -15,15 +15,15 @@
 @end
 
 @implementation GraphViewController
-@synthesize program = _program;
+@synthesize expression = _expression;
 
-- (void) setProgram:(id)program {
+- (void) setExpression:(id)expression {
     
-    _program = program;
+    _expression = expression;
     
     // Set the title of the controller
     self.title = [NSString stringWithFormat:@"y = %@",
-                  [CalcModel descriptionOfExpression:self.program]];
+                  [CalcModel descriptionOfExpression:self.expression]];
 }
 
 

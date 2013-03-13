@@ -10,8 +10,8 @@
 
 @interface GraphViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (nonatomic, strong) id program;
+@property (nonatomic, strong) id expression;
 
-- (void) setProgram:(id)program;
+- (void) setExpression:(id)expression;
 
 @end
