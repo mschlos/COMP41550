@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GraphView.h"
 
-@interface GraphViewController : UIViewController <UISplitViewControllerDelegate>
+@interface GraphViewController : UIViewController <GraphViewDelegate> 
 
 @property (nonatomic, strong) id expression;
 
-- (void) setExpression:(id)expression;
+- (IBAction)zoomInPressed;
+- (IBAction)zoomOutPressed;
 
 @end

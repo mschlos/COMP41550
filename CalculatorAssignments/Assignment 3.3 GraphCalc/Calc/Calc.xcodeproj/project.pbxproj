@@ -33,8 +33,8 @@
 		F1499CAD16B991BB0083E829 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1499CAF16B991BB0083E829 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1499CB116B991BB0083E829 /* Calc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calc-Prefix.pch"; sourceTree = "<group>"; };
-		F1499CB216B991BB0083E829 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F1499CB316B991BB0083E829 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F1499CB216B991BB0083E829 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Calc/AppDelegate.h; sourceTree = "<group>"; };
+		F1499CB316B991BB0083E829 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Calc/AppDelegate.m; sourceTree = "<group>"; };
 		F1499CB516B991BB0083E829 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F1499CB716B991BB0083E829 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F1499CB916B991BB0083E829 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F1499C9416B991BB0083E829 = {
+		F12722C216F0F00800C90801 /* GraphCalc */ = {
 			isa = PBXGroup;
 			children = (
 				F1CEFCEB16EF97000063DECB /* GraphViewController.h */,
@@ -74,6 +74,16 @@
 				F165103B16EF72130042BC28 /* AxisDrawer.m */,
 				F165103616EF71C60042BC28 /* GraphView.h */,
 				F165103716EF71C60042BC28 /* GraphView.m */,
+			);
+			name = GraphCalc;
+			sourceTree = "<group>";
+		};
+		F1499C9416B991BB0083E829 = {
+			isa = PBXGroup;
+			children = (
+				F1499CB216B991BB0083E829 /* AppDelegate.h */,
+				F1499CB316B991BB0083E829 /* AppDelegate.m */,
+				F12722C216F0F00800C90801 /* GraphCalc */,
 				F1499CA916B991BB0083E829 /* Calc */,
 				F1499CA216B991BB0083E829 /* Frameworks */,
 				F1499CA016B991BB0083E829 /* Products */,
@@ -103,8 +113,6 @@
 			children = (
 				F1499CC716B9921F0083E829 /* CalcModel.m */,
 				F1499CC616B9921F0083E829 /* CalcModel.h */,
-				F1499CB216B991BB0083E829 /* AppDelegate.h */,
-				F1499CB316B991BB0083E829 /* AppDelegate.m */,
 				F1499CBB16B991BB0083E829 /* MainStoryboard.storyboard */,
 				F1499CBE16B991BB0083E829 /* ViewController.h */,
 				F1499CBF16B991BB0083E829 /* ViewController.m */,

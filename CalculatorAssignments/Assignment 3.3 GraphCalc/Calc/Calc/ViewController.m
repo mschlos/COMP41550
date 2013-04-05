@@ -34,15 +34,16 @@
     
     if ([self graphViewController]) {
         [[self graphViewController] setExpression:self.calcModel.expression];
+    } else {
+        // performing segue named ShowingGraph
+        [self performSegueWithIdentifier:@"ShowingGraph" sender:self];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    GraphViewController *destVC = (GraphViewController *)segue.destinationViewController;
-
-    [destVC setExpression:self.calcModel.expression];
+    //setting expression
+    [segue.destinationViewController setExpression:self.calcModel.expression];
 }
-
 
 - (IBAction)digitPressed:(UIButton *)sender {
     NSString *digit = sender.titleLabel.text;

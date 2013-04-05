@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class GraphView;
+
+@protocol GraphViewDelegate
+- (double)yGivenX:(double)xValue forGraphView:(GraphView *)requestor;
+@end
+
 @interface GraphView : UIView
 
+@property (nonatomic, strong) id <GraphViewDelegate> delegate;
+@property double scale;
 @end
