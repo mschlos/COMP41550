@@ -1,0 +1,22 @@
+When Start Journey view starts, then start the accelerometer (see tutorial)
+Setup iSimulate with the app (see tutorial)
+
+http://answers.oreilly.com/topic/845-how-to-build-and-test-an-iphone-app-that-uses-the-accelerometer/
+
+
+Start logging the results, get the highest g-forces etc
+if g-force goes above x then log x with a time (and eventually position)
+
+
+Create and algorithm to calculate a score out of 10 based on the g-forces (and eventually distance)
+
+When Stop Journey is pressed show the results.
+Give a random funny comment for the score (with crowd applause or crowd sigh)
+"You couldn't steer your way out of a paper bag"
+"You couldn't drive a nail through a bag of water"
+
+Allow user to share the results on Twitter, Facebook.
+
+Update the UI significantly to make it look more professional
+
+
