@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    //Use drivingExceptions Array to display results
 }
 
 - (void)didReceiveMemoryWarning

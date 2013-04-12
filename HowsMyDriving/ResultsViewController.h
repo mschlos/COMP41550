@@ -10,10 +10,8 @@
 #import "resultsPopover.h"
 
 @interface ResultsViewController : UIViewController <UIPopoverControllerDelegate> {
-    
-    
-    IBOutlet UIViewController *popoverView;
-    
+
+    UIPopoverController *popover;
     IBOutlet UIButton *showResults;
     IBOutlet UIButton *startAgain;
     IBOutlet UIButton *shareResults;

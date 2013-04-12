@@ -10,26 +10,52 @@
 #import "ShowResultsViewController.h"
 
 @interface ResultsViewController ()
-
+    
 @end
 
-@implementation ResultsViewController
-
-- (IBAction) showResults {
-    NSLog(@"HOWYA");
+@implementation ResultsViewController{
+   
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIStoryboardPopoverSegue *popoverSegue;
-    popoverSegue=(UIStoryboardPopoverSegue *)segue;
+
+- (IBAction) showResultsPop:(id)sender {
+    UIView *anchor = sender;
+    UIViewController *viewControllerForPopover =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"ShowResultsViewController"];
     
+    // UIPopoverController DOES NOT WORK ON IPHONE!!!!!!!
+    // USE A DIALOG INSTEAD
+    
+//    popover = [[UIPopoverController alloc]
+//               initWithContentViewController:viewControllerForPopover];
+//    [popover presentPopoverFromRect:anchor.frame
+//                             inView:anchor.superview
+//           permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UIStoryboardPopoverSegue *popoverSegue;
+//    popoverSegue=(UIStoryboardPopoverSegue *)segue;
+//    
 //    UIPopoverController *popoverController;
 //    popoverController=popoverSegue.popoverController;
 //    popoverController.delegate=self;
-    
-//    ShowResultsViewController *editorVC ;
-//    editorVC=(ShowResultsViewController *) popoverController.contentViewController;
-    
+//    
+//    ShowResultsViewController *showResultsVC;
+//    showResultsVC=(ShowResultsViewController *)popoverController.contentViewController;
+//    //editorVC.emailField.text = self.emailLabel.text;
+//    
+////    UIPopoverController *popoverController;
+////    popoverController=popoverSegue.popoverController;
+////    popoverController.delegate=self;
+//    
+////    ShowResultsViewController *editorVC ;
+////    editorVC=(ShowResultsViewController *) popoverController.contentViewController;
+//    
+//}
+
+- (void)popoverControllerDidDismissPopover: (UIPopoverController *)popoverController {
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
