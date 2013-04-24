@@ -9,18 +9,25 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize drivingExceptions;
+@synthesize exception;
 
 - (void)dealloc
 {
+    [drivingExceptions release];
+    [exception release];
+
     [_window release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    drivingExceptions = [NSMutableArray array];
+    //Initialising the drivingException arrays
+    drivingExceptions = [[NSMutableArray alloc] init];
+    exception = [[Exception alloc] init];
     
+    // Override point for customization after application launch.
     return YES;
 }
 							

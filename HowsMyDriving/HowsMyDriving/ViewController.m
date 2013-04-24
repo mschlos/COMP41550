@@ -18,6 +18,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSURL *carStartURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tirespin" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID((CFURLRef) carStartURL, & carStart);
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,7 +30,7 @@
 }
 
 
-
-
-
+- (IBAction)startJourney:(id)sender {
+    AudioServicesPlaySystemSound(carStart);
+}
 @end

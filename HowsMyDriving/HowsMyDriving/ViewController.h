@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController : UIViewController {
-
-    NSMutableArray *drivingExceptions;
-
-    IBOutlet UIButton *startJourney;
+    SystemSoundID carStart;
+    
 }
+- (IBAction)startJourney:(id)sender;
 
 @end

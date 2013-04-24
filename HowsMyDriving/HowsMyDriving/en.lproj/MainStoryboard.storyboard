@@ -12,38 +12,49 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How's My Driving?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9uj-wX-QcY">
-                                <rect key="frame" x="62" y="20" width="196" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wbc-Ij-LTO">
-                                <rect key="frame" x="97" y="485" width="126" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wbc-Ij-LTO">
+                                <rect key="frame" x="90" y="493" width="140" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Start Journey!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Start Journey!" image="start.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="startJourney:" destination="2" eventType="touchUpInside" id="hZY-TB-hw6"/>
                                     <segue destination="sEY-Z4-EdU" kind="modal" id="hKZ-9K-YkD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SOu-5m-EbG">
-                                <rect key="frame" x="20" y="99" width="280" height="252"/>
-                                <string key="text">Welcome to the How's My Driving! 
-
-When you are ready, and the phone 
-is safely docked in your car, 
-click Start Journey below to 
-measure the G-Forces of your driving and rate your skills!
-
-Don't forget to share your results 
-with your friends and challenge 
-them to do better… or worse!</string>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SOu-5m-EbG">
+                                <rect key="frame" x="32" y="115" width="257" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxf-o9-PWt">
+                                <rect key="frame" x="36" y="232" width="249" height="146"/>
+                                <string key="text">When you are ready and your phone is colaborated and safely docked in your car, click Start Journey below to measure the G-Forces of your driving and rate your skills!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dont forget to share your results with your friends on Twitter or Facebook and see can they do better... or worse!" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LMs-uy-e6W">
+                                <rect key="frame" x="36" y="386" width="249" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="hows-my-driving.png" id="EB3-1h-qoh">
+                                <rect key="frame" x="20" y="20" width="280" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FgI-pA-Y9A">
+                                <rect key="frame" x="89" y="142" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">How's My Driving!
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,13 +62,11 @@ them to do better… or worse!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="startJourney" destination="Wbc-Ij-LTO" id="AcZ-X3-5ub"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="JyR-J3-rLt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679" y="-1008"/>
+            <point key="canvasLocation" x="-424" y="-642"/>
         </scene>
         <!--Driving View Controller-->
         <scene sceneID="AWf-QS-6gD">
@@ -68,29 +77,29 @@ them to do better… or worse!</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yer-Ab-klL">
-                                <rect key="frame" x="34" y="347" width="17" height="21"/>
+                                <rect key="frame" x="33" y="333" width="17" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Y:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OC8-th-Ty4">
-                                <rect key="frame" x="34" y="393" width="17" height="21"/>
+                                <rect key="frame" x="33" y="379" width="17" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Z:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kuP-aj-HHr">
-                                <rect key="frame" x="34" y="439" width="16" height="21"/>
+                                <rect key="frame" x="33" y="425" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8ob-jT-cfJ">
-                                <rect key="frame" x="98" y="485" width="125" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8ob-jT-cfJ">
+                                <rect key="frame" x="90" y="493" width="140" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Stop Journey!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Stop Journey!" image="stop.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,46 +109,125 @@ them to do better… or worse!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Keep your eyes on the prize!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XZk-2C-9CG">
-                                <rect key="frame" x="52" y="20" width="217" height="21"/>
+                                <rect key="frame" x="52" y="16" width="217" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Road1.png" id="sbj-pE-j6p">
-                                <rect key="frame" x="40" y="57" width="240" height="128"/>
+                                <rect key="frame" x="52" y="45" width="240" height="88"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rmG-EL-vrd">
-                                <rect key="frame" x="52" y="347" width="24" height="21"/>
+                                <rect key="frame" x="58" y="333" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fuw-qg-p6S">
-                                <rect key="frame" x="52" y="393" width="24" height="21"/>
+                                <rect key="frame" x="56" y="379" width="48" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lsX-IW-hBW">
-                                <rect key="frame" x="52" y="439" width="24" height="21"/>
+                                <rect key="frame" x="58" y="425" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="veY-07-Sn8">
-                                <rect key="frame" x="34" y="376" width="280" height="9"/>
+                                <rect key="frame" x="32" y="362" width="280" height="9"/>
                             </progressView>
                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="t8H-VL-WYO">
-                                <rect key="frame" x="33" y="422" width="280" height="9"/>
+                                <rect key="frame" x="32" y="408" width="280" height="9"/>
                             </progressView>
                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="dhm-vn-Ad0">
-                                <rect key="frame" x="33" y="468" width="280" height="9"/>
+                                <rect key="frame" x="33" y="454" width="280" height="9"/>
                             </progressView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Speed: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAo-8o-ZM0">
+                                <rect key="frame" x="32" y="263" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KGM-dm-ppP">
+                                <rect key="frame" x="99" y="263" width="209" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Distance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1cv-Rs-F0x">
+                                <rect key="frame" x="33" y="242" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rbs-PO-qHz">
+                                <rect key="frame" x="112" y="242" width="194" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Lat:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L0p-ge-msg">
+                                <rect key="frame" x="33" y="154" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wlu-VM-tMK">
+                                <rect key="frame" x="70" y="154" width="222" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Lon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sjq-yI-buG">
+                                <rect key="frame" x="33" y="175" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPX-2v-VCa">
+                                <rect key="frame" x="70" y="175" width="222" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Alt:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e7W-Ou-LCo">
+                                <rect key="frame" x="33" y="198" width="25" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kcm-Gj-Cwh">
+                                <rect key="frame" x="66" y="198" width="235" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Course:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="knI-Dc-6nB">
+                                <rect key="frame" x="33" y="219" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y40-og-R3y">
+                                <rect key="frame" x="98" y="219" width="202" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="alt" destination="kcm-Gj-Cwh" id="Azh-j0-YAJ"/>
+                        <outlet property="course" destination="Y40-og-R3y" id="rjA-ez-hXI"/>
+                        <outlet property="distanceLabel" destination="Rbs-PO-qHz" id="qDi-x5-4JY"/>
+                        <outlet property="lat" destination="Wlu-VM-tMK" id="LmB-em-YGD"/>
+                        <outlet property="locationManager" destination="u9k-UO-cMc" id="4OL-fy-5w0"/>
+                        <outlet property="lon" destination="rPX-2v-VCa" id="GYT-QO-4ot"/>
                         <outlet property="road" destination="sbj-pE-j6p" id="uwj-RT-uv5"/>
+                        <outlet property="speedLabel" destination="KGM-dm-ppP" id="uoU-yW-uKY"/>
                         <outlet property="stopJourney" destination="8ob-jT-cfJ" id="bt9-wn-kVy"/>
                         <outlet property="xBar" destination="veY-07-Sn8" id="QuI-YQ-CEL"/>
                         <outlet property="xLabel" destination="rmG-EL-vrd" id="J3T-C4-lCy"/>
@@ -150,34 +238,9 @@ them to do better… or worse!</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJY-jk-RaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="u9k-UO-cMc" customClass="CLLocationManager"/>
             </objects>
-            <point key="canvasLocation" x="-249" y="-1008"/>
-        </scene>
-        <!--Show Results View Controller-->
-        <scene sceneID="O5d-ts-t7m">
-            <objects>
-                <viewController storyboardIdentifier="ShowResultsViewController" id="0kQ-OR-t58" customClass="ShowResultsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vyj-YG-529">
-                        <rect key="frame" x="0.0" y="20" width="208" height="313"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s5f-yj-ZMj">
-                                <rect key="frame" x="83" y="20" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="jrL-KD-JFl"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i3l-v0-Fkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="684" y="-999"/>
+            <point key="canvasLocation" x="120" y="-642"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="8xb-nu-fGd">
@@ -187,56 +250,35 @@ them to do better… or worse!</string>
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8GH-v2-2vR">
-                                <rect key="frame" x="131" y="434" width="71" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="arL-8d-fuM">
+                                <rect key="frame" x="98" y="493" width="140" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Share!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="arL-8d-fuM">
-                                <rect key="frame" x="111" y="485" width="110" height="44"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Start Again!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Show Rank" image="show-rank.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2" kind="modal" id="Bmr-Ja-ZFK"/>
+                                    <segue destination="Ad1-Fd-RPI" kind="modal" id="XWI-Q1-tWN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="tKs-Ab-eM6">
-                                <rect key="frame" x="151" y="48" width="18" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showResultsPop:" destination="9nG-WP-UtF" eventType="touchUpInside" id="K7R-W9-YPV"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D6q-ps-e8G">
-                                <rect key="frame" x="108" y="20" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Driving Exceptions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D6q-ps-e8G">
+                                <rect key="frame" x="90" y="20" width="141" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kao-oU-1oP">
-                                <rect key="frame" x="146" y="285" width="40" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" id="Yma-dV-aNa">
+                                <rect key="frame" x="0.0" y="49" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9nG-WP-UtF" id="yQW-9i-4ob"/>
+                                    <outlet property="delegate" destination="9nG-WP-UtF" id="G4d-Ip-WzC"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Click an Exception" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ejQ-iq-K1a">
+                                <rect key="frame" x="58" y="350" width="204" height="126"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -245,25 +287,120 @@ them to do better… or worse!</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="drivingRank" destination="kao-oU-1oP" id="1bJ-H1-tvA"/>
-                        <outlet property="shareResults" destination="8GH-v2-2vR" id="cMv-Qo-aC3"/>
-                        <outlet property="showResults" destination="tKs-Ab-eM6" id="TYn-zA-yFt"/>
-                        <outlet property="startAgain" destination="arL-8d-fuM" id="wdO-Gm-0Yw"/>
+                        <outlet property="exceptionLabel" destination="ejQ-iq-K1a" id="dt7-2H-ooi"/>
+                        <outlet property="exceptionPicker" destination="Yma-dV-aNa" id="eL0-r8-fy9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piz-WT-Ryn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="-1008"/>
+            <point key="canvasLocation" x="690" y="-642"/>
+        </scene>
+        <!--Rank View Controller-->
+        <scene sceneID="yYU-ci-xul">
+            <objects>
+                <viewController id="Ad1-Fd-RPI" customClass="RankViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lrs-u2-ED4">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8GH-v2-2vR">
+                                <rect key="frame" x="20" y="384" width="90" height="71"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Facebook" image="icon-facebook.jpg">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postOnFacebookButtonTapped:" destination="Ad1-Fd-RPI" eventType="touchUpInside" id="PHU-M5-8qH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5hh-xB-zGM">
+                                <rect key="frame" x="220" y="385" width="80" height="70"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Twitter" image="twitter_icon.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tweetButtonTapped:" destination="Ad1-Fd-RPI" eventType="touchUpInside" id="IT9-Jw-8sM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rank Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kao-oU-1oP">
+                                <rect key="frame" x="46" y="116" width="228" height="41"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rank Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cMF-qU-wYI">
+                                <rect key="frame" x="52" y="217" width="217" height="113"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="plE-Ti-Y1d">
+                                <rect key="frame" x="137" y="409" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mdi-pj-nZw">
+                                <rect key="frame" x="90" y="493" width="140" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start Again" image="start-again.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2" kind="modal" id="VNU-Pf-veV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eNF-jw-OHO"/>
+                    <connections>
+                        <outlet property="drivingRank" destination="kao-oU-1oP" id="7eo-NN-NIh"/>
+                        <outlet property="drivingRankDescription" destination="cMF-qU-wYI" id="gJ9-g7-Ntd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yE3-ST-ZCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="-1358"/>
         </scene>
     </scenes>
     <resources>
         <image name="Road1.png" width="331" height="262"/>
+        <image name="hows-my-driving.png" width="293" height="47"/>
+        <image name="icon-facebook.jpg" width="205" height="200"/>
+        <image name="show-rank.png" width="157" height="39"/>
+        <image name="start-again.png" width="156" height="39"/>
+        <image name="start.png" width="198" height="41"/>
+        <image name="stop.png" width="193" height="41"/>
+        <image name="twitter_icon.png" width="300" height="300"/>
     </resources>
     <classes>
+        <class className="CLLocationManager" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CLLocationManager.h"/>
+        </class>
         <class className="DrivingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DrivingViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="alt" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="course" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lat" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lon" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="road" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stopJourney" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="xBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="xLabel" candidateClass="UILabel"/>
@@ -273,26 +410,26 @@ them to do better… or worse!</string>
                 <relationship kind="outlet" name="zLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="RankViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="postOnFacebookButtonTapped:"/>
+                <relationship kind="action" name="tweetButtonTapped:"/>
+                <relationship kind="outlet" name="drivingRank" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="drivingRankDescription" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="ResultsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ResultsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="showResultsPop:"/>
-                <relationship kind="outlet" name="drivingRank" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shareResults" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="showResults" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="startAgain" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ShowResultsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowResultsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="results" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="exceptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="exceptionPicker" candidateClass="UIPickerView"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="startJourney" candidateClass="UIButton"/>
+                <relationship kind="action" name="startJourney:"/>
             </relationships>
         </class>
     </classes>

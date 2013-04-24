@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Exception.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     NSMutableArray *drivingExceptions;
-
+    Exception *exception;
 }
+@property(nonatomic, retain) NSMutableArray *drivingExceptions;
+@property(nonatomic, retain) Exception *exception;
 
 @property (strong, nonatomic) UIWindow *window;
     

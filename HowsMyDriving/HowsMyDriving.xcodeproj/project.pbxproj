@@ -7,7 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F13115341714A4840070A60A /* ShowResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13115331714A4840070A60A /* ShowResultsViewController.m */; };
+		F1311536171959080070A60A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1311535171959080070A60A /* Social.framework */; };
+		F13115381719641B0070A60A /* horngoby.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115371719641B0070A60A /* horngoby.wav */; };
+		F131153A1719642E0070A60A /* tirespin.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115391719642E0070A60A /* tirespin.wav */; };
+		F131153C17198B8E0070A60A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F131153B17198B8E0070A60A /* CoreLocation.framework */; };
+		F131154217213F840070A60A /* Exception.m in Sources */ = {isa = PBXBuildFile; fileRef = F131154117213F840070A60A /* Exception.m */; };
+		F13115451725A7EF0070A60A /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13115441725A7EF0070A60A /* RankViewController.m */; };
+		F13115471726FA1C0070A60A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13115461726FA1C0070A60A /* AudioToolbox.framework */; };
+		F131154F172722050070A60A /* icon-facebook.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F131154E172722050070A60A /* icon-facebook.jpg */; };
+		F1311551172722E40070A60A /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1311550172722E40070A60A /* twitter_icon.png */; };
+		F13115531727284F0070A60A /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = F13115521727284F0070A60A /* start.png */; };
+		F1311555172729EF0070A60A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = F1311554172729EF0070A60A /* stop.png */; };
+		F131155917272BEF0070A60A /* hows-my-driving.png in Resources */ = {isa = PBXBuildFile; fileRef = F131155817272BEF0070A60A /* hows-my-driving.png */; };
+		F131155B17272F430070A60A /* show-rank.png in Resources */ = {isa = PBXBuildFile; fileRef = F131155A17272F430070A60A /* show-rank.png */; };
+		F131155D17272F490070A60A /* start-again.png in Resources */ = {isa = PBXBuildFile; fileRef = F131155C17272F490070A60A /* start-again.png */; };
 		F16F2C1D16B6CAF7006BDAE2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16F2C1C16B6CAF7006BDAE2 /* UIKit.framework */; };
 		F16F2C1F16B6CAF7006BDAE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16F2C1E16B6CAF7006BDAE2 /* Foundation.framework */; };
 		F16F2C2116B6CAF7006BDAE2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16F2C2016B6CAF7006BDAE2 /* CoreGraphics.framework */; };
@@ -28,8 +41,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F13115321714A4840070A60A /* ShowResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowResultsViewController.h; path = ../ShowResultsViewController.h; sourceTree = "<group>"; };
-		F13115331714A4840070A60A /* ShowResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowResultsViewController.m; path = ../ShowResultsViewController.m; sourceTree = "<group>"; };
+		F1311535171959080070A60A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F13115371719641B0070A60A /* horngoby.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = horngoby.wav; sourceTree = "<group>"; };
+		F13115391719642E0070A60A /* tirespin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tirespin.wav; sourceTree = "<group>"; };
+		F131153B17198B8E0070A60A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F131154017213F830070A60A /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		F131154117213F840070A60A /* Exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exception.m; sourceTree = "<group>"; };
+		F13115431725A7EF0070A60A /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankViewController.h; path = ../RankViewController.h; sourceTree = "<group>"; };
+		F13115441725A7EF0070A60A /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankViewController.m; path = ../RankViewController.m; sourceTree = "<group>"; };
+		F13115461726FA1C0070A60A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F131154E172722050070A60A /* icon-facebook.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "icon-facebook.jpg"; sourceTree = "<group>"; };
+		F1311550172722E40070A60A /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
+		F13115521727284F0070A60A /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
+		F1311554172729EF0070A60A /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		F131155817272BEF0070A60A /* hows-my-driving.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hows-my-driving.png"; sourceTree = "<group>"; };
+		F131155A17272F430070A60A /* show-rank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "show-rank.png"; sourceTree = "<group>"; };
+		F131155C17272F490070A60A /* start-again.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-again.png"; sourceTree = "<group>"; };
 		F16F2C1816B6CAF7006BDAE2 /* HowsMyDriving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowsMyDriving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16F2C1C16B6CAF7006BDAE2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F16F2C1E16B6CAF7006BDAE2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13115471726FA1C0070A60A /* AudioToolbox.framework in Frameworks */,
+				F131153C17198B8E0070A60A /* CoreLocation.framework in Frameworks */,
+				F1311536171959080070A60A /* Social.framework in Frameworks */,
 				F16F2C1D16B6CAF7006BDAE2 /* UIKit.framework in Frameworks */,
 				F16F2C1F16B6CAF7006BDAE2 /* Foundation.framework in Frameworks */,
 				F16F2C2116B6CAF7006BDAE2 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +103,8 @@
 		F16F2C0D16B6CAF6006BDAE2 = {
 			isa = PBXGroup;
 			children = (
+				F131154017213F830070A60A /* Exception.h */,
+				F131154117213F840070A60A /* Exception.m */,
 				F16F2C2216B6CAF7006BDAE2 /* HowsMyDriving */,
 				F16F2C1B16B6CAF7006BDAE2 /* Frameworks */,
 				F16F2C1916B6CAF7006BDAE2 /* Products */,
@@ -90,6 +122,9 @@
 		F16F2C1B16B6CAF7006BDAE2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F13115461726FA1C0070A60A /* AudioToolbox.framework */,
+				F131153B17198B8E0070A60A /* CoreLocation.framework */,
+				F1311535171959080070A60A /* Social.framework */,
 				F16F2C1C16B6CAF7006BDAE2 /* UIKit.framework */,
 				F16F2C1E16B6CAF7006BDAE2 /* Foundation.framework */,
 				F16F2C2016B6CAF7006BDAE2 /* CoreGraphics.framework */,
@@ -100,8 +135,8 @@
 		F16F2C2216B6CAF7006BDAE2 /* HowsMyDriving */ = {
 			isa = PBXGroup;
 			children = (
-				F13115321714A4840070A60A /* ShowResultsViewController.h */,
-				F13115331714A4840070A60A /* ShowResultsViewController.m */,
+				F13115431725A7EF0070A60A /* RankViewController.h */,
+				F13115441725A7EF0070A60A /* RankViewController.m */,
 				F16F2C4816B6EB46006BDAE2 /* ResultsViewController.h */,
 				F16F2C4916B6EB46006BDAE2 /* ResultsViewController.m */,
 				F16F2C4516B6EB28006BDAE2 /* DrivingViewController.h */,
@@ -119,6 +154,15 @@
 		F16F2C2316B6CAF7006BDAE2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F131155817272BEF0070A60A /* hows-my-driving.png */,
+				F131155C17272F490070A60A /* start-again.png */,
+				F131155A17272F430070A60A /* show-rank.png */,
+				F1311554172729EF0070A60A /* stop.png */,
+				F13115521727284F0070A60A /* start.png */,
+				F1311550172722E40070A60A /* twitter_icon.png */,
+				F131154E172722050070A60A /* icon-facebook.jpg */,
+				F13115391719642E0070A60A /* tirespin.wav */,
+				F13115371719641B0070A60A /* horngoby.wav */,
 				F16F2C7916B8190D006BDAE2 /* Road1.png */,
 				F16F2C7A16B8190D006BDAE2 /* Road2.png */,
 				F16F2C7B16B8190D006BDAE2 /* Road3.png */,
@@ -194,6 +238,15 @@
 				F16F2C7E16B8190D006BDAE2 /* Road2.png in Resources */,
 				F16F2C7F16B8190D006BDAE2 /* Road3.png in Resources */,
 				F16F2C8016B8190D006BDAE2 /* Road4.png in Resources */,
+				F13115381719641B0070A60A /* horngoby.wav in Resources */,
+				F131153A1719642E0070A60A /* tirespin.wav in Resources */,
+				F131154F172722050070A60A /* icon-facebook.jpg in Resources */,
+				F1311551172722E40070A60A /* twitter_icon.png in Resources */,
+				F13115531727284F0070A60A /* start.png in Resources */,
+				F1311555172729EF0070A60A /* stop.png in Resources */,
+				F131155917272BEF0070A60A /* hows-my-driving.png in Resources */,
+				F131155B17272F430070A60A /* show-rank.png in Resources */,
+				F131155D17272F490070A60A /* start-again.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +262,8 @@
 				F16F2C3916B6CAF7006BDAE2 /* ViewController.m in Sources */,
 				F16F2C4716B6EB28006BDAE2 /* DrivingViewController.m in Sources */,
 				F16F2C4A16B6EB46006BDAE2 /* ResultsViewController.m in Sources */,
-				F13115341714A4840070A60A /* ShowResultsViewController.m in Sources */,
+				F131154217213F840070A60A /* Exception.m in Sources */,
+				F13115451725A7EF0070A60A /* RankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

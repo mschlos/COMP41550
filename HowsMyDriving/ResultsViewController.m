@@ -7,56 +7,14 @@
 //
 
 #import "ResultsViewController.h"
-#import "ShowResultsViewController.h"
 
 @interface ResultsViewController ()
     
 @end
 
-@implementation ResultsViewController{
-   
-}
+@implementation ResultsViewController 
 
-
-- (IBAction) showResultsPop:(id)sender {
-    UIView *anchor = sender;
-    UIViewController *viewControllerForPopover =
-    [self.storyboard instantiateViewControllerWithIdentifier:@"ShowResultsViewController"];
-    
-    // UIPopoverController DOES NOT WORK ON IPHONE!!!!!!!
-    // USE A DIALOG INSTEAD
-    
-//    popover = [[UIPopoverController alloc]
-//               initWithContentViewController:viewControllerForPopover];
-//    [popover presentPopoverFromRect:anchor.frame
-//                             inView:anchor.superview
-//           permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    UIStoryboardPopoverSegue *popoverSegue;
-//    popoverSegue=(UIStoryboardPopoverSegue *)segue;
-//    
-//    UIPopoverController *popoverController;
-//    popoverController=popoverSegue.popoverController;
-//    popoverController.delegate=self;
-//    
-//    ShowResultsViewController *showResultsVC;
-//    showResultsVC=(ShowResultsViewController *)popoverController.contentViewController;
-//    //editorVC.emailField.text = self.emailLabel.text;
-//    
-////    UIPopoverController *popoverController;
-////    popoverController=popoverSegue.popoverController;
-////    popoverController.delegate=self;
-//    
-////    ShowResultsViewController *editorVC ;
-////    editorVC=(ShowResultsViewController *) popoverController.contentViewController;
-//    
-//}
-
-- (void)popoverControllerDidDismissPopover: (UIPopoverController *)popoverController {
-
-}
+@synthesize exceptionPicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,9 +27,40 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    //and then access the variable by appDelegate.variable
     
-	// Do any additional setup after loading the view.
+    [super viewDidLoad];
+}
+
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+     return 1;
+} 
+
+- (NSInteger) pickerView: (UIPickerView *) pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [appDelegate.drivingExceptions count];
+}
+
+- (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSLog(@"%ld", (long)row);
+    Exception *_exception = (Exception *)[appDelegate.drivingExceptions objectAtIndex:row];  // explicit cast
+    return _exception.exceptionTypeName;
+}
+
+- (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"%ld", (long)row);
+    Exception *_exception = (Exception *)[appDelegate.drivingExceptions objectAtIndex:row];  // explicit cast
+    
+    NSString *displayText = _exception.exceptionTypeName;
+    displayText = [displayText stringByAppendingString:@" at "];
+    displayText = [displayText stringByAppendingString:_exception.time];
+    displayText = [displayText stringByAppendingString:@" travelling at "];
+    displayText = [displayText stringByAppendingString:[NSString stringWithFormat:@"%f KM/hr", _exception.exceptionLocation.speed]];
+    
+    exceptionLabel.text = displayText;
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +70,8 @@
 }
 
 - (void)dealloc {
-    [drivingRank release];
+    [appDelegate release];
+    [exceptionLabel release];
     [super dealloc];
 }
 @end

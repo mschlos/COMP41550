@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "resultsPopover.h"
+#import "AppDelegate.h"
+#import "Exception.h"
 
-@interface ResultsViewController : UIViewController <UIPopoverControllerDelegate> {
+@interface ResultsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+    
+    AppDelegate *appDelegate;
+    
+    IBOutlet UILabel *exceptionLabel;
+ 
+    IBOutlet UIPickerView *exceptionPicker;
 
-    UIPopoverController *popover;
-    IBOutlet UIButton *showResults;
-    IBOutlet UIButton *startAgain;
-    IBOutlet UIButton *shareResults;
-
-    IBOutlet UILabel *drivingRank;
 }
+
+@property (retain, nonatomic) IBOutlet UIPickerView *exceptionPicker;
 
 @end
