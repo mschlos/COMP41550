@@ -77,13 +77,17 @@
 {
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    [appDelegate.drivingExceptions removeAllObjects];
+    
     NSURL *carHornURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"horngoby" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID((CFURLRef) carHornURL, & carHorn);
 
-    //NB Clean Up Other Vars here
-    
     harshBreakingStarted = false;
     unsafeAccelerationStarted = false;
+    unsafeCorneringStarted = false;
+    unsafeBumpDetected = false;
+    
+    listenToAccel = true;
     
     // road image animation
     self.road.animationImages = [NSArray arrayWithObjects:
@@ -108,7 +112,8 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     accelerometer = [UIAccelerometer sharedAccelerometer];
-    accelerometer.updateInterval = 0.1;
+    //accelerometer.updateInterval = 0.1;
+    accelerometer.updateInterval = 0.5;
     distance = 0.0;
     
     //making this class the delegate...?
@@ -125,81 +130,69 @@
         [self mockSomeData];
     }
     
+    listenToAccel = false;
+    
     [locationManager stopUpdatingLocation];
     [locationManager stopMonitoringSignificantLocationChanges];
+    
 }
 
 - (void) mockSomeData {
     
-    NSLog(@"No exceptions logged so mocking results in mockSomeData");
+    NSLog(@"No exceptions logged so mocking results for picker");
     
-    Exception *mockException = [[Exception alloc] init];
-    mockException.time = [[NSString alloc] initWithString:[self getDateString]];
-    mockException.exceptionTypeName = @"Harsh Breaking";
-    mockException.distance = 10.0;
-    mockException.exceptionLocation = currentLocation;
-    [appDelegate.drivingExceptions addObject:mockException];
-    
-    mockException = [[Exception alloc] init];
-    mockException.time = [[NSString alloc] initWithString:[self getDateString]];
-    mockException.exceptionTypeName = @"Unsafe Acceleration";
-    mockException.distance = 20.0;
-    mockException.exceptionLocation = currentLocation;
-    [appDelegate.drivingExceptions addObject:mockException];
-    
-    mockException = [[Exception alloc] init];
-    mockException.time = [[NSString alloc] initWithString:[self getDateString]];
-    mockException.exceptionTypeName = @"Unsafe Cornering";
-    mockException.distance = 40.0;
-    mockException.exceptionLocation = currentLocation;
-    [appDelegate.drivingExceptions addObject:mockException];
-    
-    mockException = [[Exception alloc] init];
-    mockException.time = [[NSString alloc] initWithString:[self getDateString]];
-    mockException.exceptionTypeName = @"Unsafe Bump";
-    mockException.distance = 50.0;
-    mockException.exceptionLocation = currentLocation;
-    [appDelegate.drivingExceptions addObject:mockException];
+    [self addException:@"* Harsh Breaking * "];
+    [self addException:@"* Unsafe Acceleration *"];
+    [self addException:@"* Unsafe Cornering *"];
+    [self addException:@"* Unsafe Bump *"];
+
 }
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    xLabel.text = [NSString stringWithFormat:@"%f", acceleration.x];
-    xBar.progress = ABS(acceleration.x);
-    
-    yLabel.text = [NSString stringWithFormat:@"%f", acceleration.y];
-    yBar.progress = ABS(acceleration.y);
-    
-    zLabel.text = [NSString stringWithFormat:@"%f", acceleration.z];
-    zBar.progress = ABS(acceleration.z);
-    
-    //For harsh breaking:
-    //If Y Axis is above 4 for any longer than 5 seconds then that is harsh breaking
-    if (yBar.progress >= 4) {
-        [self startHarshBreakingTimer];
-    }
-    else {
-        [self stopHarshBreakingTimer];
-    }
-    
-    //For unsafe accelleration
-    //If Y Axis is -1 or below for longer than 10 seconds then that is unsafe acceleration
-    if (yBar.progress <= -1) {
-        [self startUnsafeAccelerationTimer];
-    }
-    else {
-        [self stopUnsafeAccelerationTimer];
-    }
-    
-    //For fast cornering, detect bottom peak of -2 for X axis
-    if (xBar.progress <= -2) {
-        [self unsafeCorneringDetected];
-    }
-    
-    //For going over a bump/pothole too fast check out values and jolts in for the Z axis
-    if (zBar.progress > 1) {
-        [self unsafeBumpDetected];
+    if(listenToAccel) {
+        xLabel.text = [NSString stringWithFormat:@"%f", acceleration.x];
+        xBar.progress = ABS(acceleration.x);
+        
+        yLabel.text = [NSString stringWithFormat:@"%f", acceleration.y];
+        yBar.progress = ABS(acceleration.y);
+        
+        zLabel.text = [NSString stringWithFormat:@"%f", acceleration.z];
+        zBar.progress = ABS(acceleration.z);
+        
+        NSLog(@"YBar: %f", yBar.progress);
+        NSLog(@"XBar: %f", xBar.progress);
+        NSLog(@"ZBar: %f", zBar.progress);
+        
+        //For harsh breaking:
+        //If Y Axis is below 0.75 for any longer than 5 seconds then that is harsh breaking
+        if (yBar.progress <= 0.75) {
+            [self startHarshBreakingTimer];
+        }
+        else {
+            [self stopHarshBreakingTimer];
+        }
+        
+        //For unsafe accelleration
+        //If Y Axis is above 1 for longer than 10 seconds then that is unsafe acceleration
+        if (yBar.progress >= 1) {
+            [self startUnsafeAccelerationTimer];
+        }
+        else {
+            [self stopUnsafeAccelerationTimer];
+        }
+        
+        //For fast cornering, detect peak of 0.35 for X axis for 5 seconds
+        if (xBar.progress >= 0.35) {
+            [self startUnsafeCorneringTimer];
+        } else {
+            [self stopUnsafeCorneringTimer];
+        }
+        
+        //For going over a bump/pothole too fast check out values and jolts in for the Z axis
+        if (zBar.progress >= 0.75) {
+            [self unsafeBumpDetected];
+        }
     }
 }
 
@@ -223,25 +216,12 @@
         if(harshBreakingStopTime - harshBreakStartTime > 5)
         {
             NSLog(@"HARSH BREAKING DETECTED");
-            AudioServicesPlaySystemSound(carHorn);
             
-            //Setting time of event
-            appDelegate.exception.time = [[NSString alloc] initWithString:[self getDateString]];
-            
-            //Setting name of event
-            appDelegate.exception.exceptionTypeName = [[NSString alloc] initWithString:@"Harsh Breaking"];
-            
-            //Add location and exception info to array
-            appDelegate.exception.exceptionLocation = currentLocation;
-           
-            //Add to NSMutableArray
-            [appDelegate.drivingExceptions addObject:appDelegate.exception];
+            [self addException:@"Harsh Breaking"];
         }
-        
         harshBreakingStarted = false;
     }
 }
-
 
 - (void) startUnsafeAccelerationTimer {
     
@@ -253,7 +233,6 @@
     }
 }
 
-
 - (void) stopUnsafeAccelerationTimer {
     
     if(unsafeAccelerationStarted) {
@@ -264,76 +243,80 @@
         if(harshAccelStopTime - harshAccelStartTime >= 10) {
             NSLog(@"UNSAFE ACCELERATION DETECTED");
             
-            AudioServicesPlaySystemSound(carHorn);
+            [self addException:@"Unsafe Acceleration"];
             
-            //Setting time of event
-            appDelegate.exception.time = [[NSString alloc] initWithString:[self getDateString]];
-            
-            //Setting the name of the exception
-            appDelegate.exception.exceptionTypeName = [[NSString alloc] initWithString:@"Unsafe Acceleration"];
-            
-            //Add location and exception info to array
-            appDelegate.exception.exceptionLocation = currentLocation;
-            
-            //Add to NSMutableArray
-            [appDelegate.drivingExceptions addObject:appDelegate.exception];
         }
         unsafeAccelerationStarted = false;
     }
 }
 
-- (NSString *)getDateString {
+- (void) startUnsafeCorneringTimer {
     
-    //Setting the time
-    NSDate *date = [[NSDate alloc] init];
-    NSLog(@"%@", date);
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    
-    NSLog(@"%@", dateString);
-    
-    return dateString;
+    if(!unsafeCorneringStarted) {
+                                //Time in seconds
+        unsafeCorneringStart = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"Time unsafeCorneringStart =%ld", unsafeCorneringStart);
+        unsafeCorneringStarted = true;
+    }
 }
 
-- (void) unsafeCorneringDetected {
-    //log unsafe cornering exception
-    NSLog(@"UNSAFE CORNERING DETECTED");
+- (void) stopUnsafeCorneringTimer {
     
-    AudioServicesPlaySystemSound(carHorn);
-    
-    //Setting time of event
-    appDelegate.exception.time = [[NSString alloc] initWithString:[self getDateString]];
-    
-    //Setting name of event
-    appDelegate.exception.exceptionTypeName = [[NSString alloc] initWithString:@"Unsafe Cornering"];
-    
-    //Setting location of event
-    appDelegate.exception.exceptionLocation = currentLocation;
-    
-    //Add to NSMutableArray
-    [appDelegate.drivingExceptions addObject:appDelegate.exception];
+    if(unsafeCorneringStarted) {
+                                    //Time in seconds
+        long unsafeCorneringStopTime = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"Time unsafeCorneringStopTime =%ld", unsafeCorneringStopTime);
+        
+        if( unsafeCorneringStopTime - unsafeCorneringStart >= 5) {
+            //log unsafe cornering exception
+            NSLog(@"UNSAFE CORNERING DETECTED");
+            
+            [self addException:@"Unsafe Cornering"];
+            
+        }
+        unsafeCorneringStarted = false;
+    }
 }
 
+- (void) startUnsafeBumpTimerReset {
+    if(!unsafeBumpDetected) {
+        unsafeBumpTimerReset = [[NSDate date] timeIntervalSince1970];
+        unsafeBumpDetected = true;
+    }
+}
 
 - (void) unsafeBumpDetected {
-    //log unsafe bump exception
-    NSLog(@"UNSAFE BUMP DETECTED");
+                            //Time in seconds
+    long unsafeLapseTime = [[NSDate date] timeIntervalSince1970];
     
+    NSLog(@"unsafeLapseTime: %ld", unsafeLapseTime);
+    
+    if(!unsafeBumpDetected) {
+        [self startUnsafeBumpTimerReset];
+        
+            //log unsafe bump exception
+        NSLog(@"UNSAFE BUMP DETECTED");
+        [self addException:@"Unsafe Bump"];
+    }
+    
+    //Waiting 5 seconds before detecting another bump
+    if(unsafeLapseTime - unsafeBumpTimerReset >= 5) {
+        unsafeBumpDetected = false;
+    }
+}
+
+-(void) addException:(NSString *)exceptionName
+{
     AudioServicesPlaySystemSound(carHorn);
     
-    //Setting time of event
-    appDelegate.exception.time = [[NSString alloc] initWithString:[self getDateString]];
+    Exception *newException = [[Exception alloc] init];
+        newException.time = [[NSString alloc] initWithString:[self getDateString]];
+        newException.exceptionTypeName = exceptionName;
+        newException.distance = distance;
+        newException.exceptionLocation = currentLocation;
     
-    //Setting name of event
-    appDelegate.exception.exceptionTypeName = [[NSString alloc] initWithString:@"Unsafe Bump"];
-    
-    //Setting location of event
-    appDelegate.exception.exceptionLocation = currentLocation;
-    
-    //Add to NSMutableArray
-    [appDelegate.drivingExceptions addObject:appDelegate.exception];
+    NSLog(@"ADDING EXCEPTION TO ARRAY = %@", exceptionName);
+    [appDelegate.drivingExceptions addObject:newException];
 }
 
 
@@ -353,26 +336,7 @@
     lat.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
     lon.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
     alt.text = [NSString stringWithFormat:@"%f", currentLocation.altitude];
-    
-    if(currentLocation.course > NORTH_DEGREES) {
-        course.text = @"North";
-    } else if(currentLocation.course > NORTHWEST_DEGREES) {
-        course.text = @"North West";
-    } else if(currentLocation.course > WEST_DEGREES) {
-        course.text = @"West";
-    } else if(currentLocation.course > SOUTHWEST_DEGREES) {
-        course.text = @"South West";
-    } else if(currentLocation.course > SOUTH_DEGREES) {
-        course.text = @"South";
-    } else if(currentLocation.course > SOUTHEAST_DEGREES) {
-        course.text = @"South East";
-    } else if(currentLocation.course > EAST_DEGREES) {
-        course.text = @"East";
-    } else if(currentLocation.course > NORTHEAST_DEGREES) {
-        course.text = @"North East";
-    } else {
-        course.text = @"North";
-    }
+    course.text = [self getCourseText:currentLocation.course];
     
   	//NSLog(@"%f%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
@@ -388,7 +352,7 @@
         int KMs = (distance / 1000);
         
         if(KMs < 0) {
-            distanceLabel.text = @"0 KM/hr";
+            distanceLabel.text = @"0 km/h";
         } else {
             distanceLabel.text = [NSString stringWithFormat:@"%d", KMs];
             appDelegate.exception.distance = KMs;
@@ -397,9 +361,9 @@
         // get Speed from current location
         
         if(currentLocation.speed < 0) {
-            speedLabel.text = @"0 KM/hr";
+            speedLabel.text = @"0 km/h";
         } else {
-            speedLabel.text = [NSString stringWithFormat:@"%f KM/hr", lastLocation.speed];
+            speedLabel.text = [NSString stringWithFormat:@"%f km/r", lastLocation.speed];
         }
         
     }
@@ -407,6 +371,45 @@
     // Update the last location with the current location
     [lastLocation release];
     lastLocation = [currentLocation retain];
+}
+
+- (NSString *) getCourseText:(double) heading {
+    
+    if(heading > NORTH_DEGREES) {
+        return @"North";
+    } else if(heading > NORTHWEST_DEGREES) {
+        return @"North West";
+    } else if(heading > WEST_DEGREES) {
+        return @"West";
+    } else if(heading > SOUTHWEST_DEGREES) {
+        return @"South West";
+    } else if(heading > SOUTH_DEGREES) {
+        return @"South";
+    } else if(heading > SOUTHEAST_DEGREES) {
+        return @"South East";
+    } else if(heading > EAST_DEGREES) {
+        return @"East";
+    } else if(heading > NORTHEAST_DEGREES) {
+        return @"North East";
+    } else {
+        return @"North";
+    }
+    return @"";
+}
+
+- (NSString *)getDateString {
+    
+    //Setting the time
+    NSDate *date = [[NSDate alloc] init];
+    NSLog(@"%@", date);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    
+    NSLog(@"%@", dateString);
+    
+    return dateString;
 }
 
 - (BOOL)isLocationValid:(CLLocation *)location {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F12401D1172868920010137E /* deiving-exceptions.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401D0172868920010137E /* deiving-exceptions.png */; };
+		F12401D31728697A0010137E /* eyes-on-prize.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401D21728697A0010137E /* eyes-on-prize.png */; };
+		F12401D917287E410010137E /* caricon57.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401D817287E410010137E /* caricon57.png */; };
+		F12401DB17287E8A0010137E /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401DA17287E8A0010137E /* icon114.png */; };
 		F1311536171959080070A60A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1311535171959080070A60A /* Social.framework */; };
 		F13115381719641B0070A60A /* horngoby.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115371719641B0070A60A /* horngoby.wav */; };
 		F131153A1719642E0070A60A /* tirespin.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115391719642E0070A60A /* tirespin.wav */; };
@@ -41,6 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F12401D0172868920010137E /* deiving-exceptions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deiving-exceptions.png"; sourceTree = "<group>"; };
+		F12401D21728697A0010137E /* eyes-on-prize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyes-on-prize.png"; sourceTree = "<group>"; };
+		F12401D817287E410010137E /* caricon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = caricon57.png; path = ../caricon57.png; sourceTree = "<group>"; };
+		F12401DA17287E8A0010137E /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon114.png; path = ../icon114.png; sourceTree = "<group>"; };
 		F1311535171959080070A60A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F13115371719641B0070A60A /* horngoby.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = horngoby.wav; sourceTree = "<group>"; };
 		F13115391719642E0070A60A /* tirespin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tirespin.wav; sourceTree = "<group>"; };
@@ -154,6 +162,10 @@
 		F16F2C2316B6CAF7006BDAE2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F12401DA17287E8A0010137E /* icon114.png */,
+				F12401D817287E410010137E /* caricon57.png */,
+				F12401D21728697A0010137E /* eyes-on-prize.png */,
+				F12401D0172868920010137E /* deiving-exceptions.png */,
 				F131155817272BEF0070A60A /* hows-my-driving.png */,
 				F131155C17272F490070A60A /* start-again.png */,
 				F131155A17272F430070A60A /* show-rank.png */,
@@ -247,6 +259,10 @@
 				F131155917272BEF0070A60A /* hows-my-driving.png in Resources */,
 				F131155B17272F430070A60A /* show-rank.png in Resources */,
 				F131155D17272F490070A60A /* start-again.png in Resources */,
+				F12401D1172868920010137E /* deiving-exceptions.png in Resources */,
+				F12401D31728697A0010137E /* eyes-on-prize.png in Resources */,
+				F12401D917287E410010137E /* caricon57.png in Resources */,
+				F12401DB17287E8A0010137E /* icon114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

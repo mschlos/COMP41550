@@ -116,11 +116,15 @@
     NSString *resultRank;
     
     resultLabel = @"You committed ";
+    resultLabel = [resultLabel stringByAppendingString:@"\n"];
     resultLabel = [resultLabel stringByAppendingString:[NSString stringWithFormat:@"%g", numOfExceptions]];
-    resultLabel = [resultLabel stringByAppendingString:@" exceptions over "];
-    resultLabel = [resultLabel stringByAppendingString:[NSString stringWithFormat:@"%g", distance]];
+    resultLabel = [resultLabel stringByAppendingString:@" exceptions "];
+    resultLabel = [resultLabel stringByAppendingString:@"\n"];
+    resultLabel = [resultLabel stringByAppendingString:[NSString stringWithFormat:@" over %g", distance]];
     resultLabel = [resultLabel stringByAppendingString:@" "];
     resultLabel = [resultLabel stringByAppendingString:@"KM! "];
+    resultLabel = [resultLabel stringByAppendingString:@"\n"];
+    resultLabel = [resultLabel stringByAppendingString:@"\n"];
     resultLabel = [resultLabel stringByAppendingString:@"That ranks you: "];
     
     if(numOfExceptions <= 1) {
@@ -169,7 +173,6 @@
         resultRank = @"Too Fast Too Furious!";
     }
     
-    resultLabel = [resultLabel stringByAppendingString:resultRank];
     drivingRankDescription.text = resultLabel;
     drivingRank.text = resultRank;
     socialText = resultRank;

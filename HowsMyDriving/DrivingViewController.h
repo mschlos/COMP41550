@@ -39,11 +39,18 @@
 
     int MainInt;
     
+    BOOL listenToAccel;
+    
     BOOL *harshBreakingStarted;
     BOOL *unsafeAccelerationStarted;
+    BOOL *unsafeCorneringStarted;
+    BOOL *unsafeBumpDetected;
     
     long harshBreakStartTime;
     long harshAccelStartTime;
+    long unsafeCorneringStart;
+    
+    long unsafeBumpTimerReset;
     
     CLLocationDistance distance;
     
