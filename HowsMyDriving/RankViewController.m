@@ -16,8 +16,8 @@
 @implementation RankViewController
 
 - (IBAction)postOnFacebookButtonTapped:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        
+    
+    if (NSClassFromString(@"SLComposeViewController") != Nil) {
         NSString *socialSentence;
         socialSentence = @"I just got ranked ";
         socialSentence = [socialSentence stringByAppendingString:[NSString stringWithFormat:@"%@", socialText]];
@@ -38,16 +38,18 @@
         
         //present the composer to the user
         [self presentViewController:fbComposer animated:YES completion:nil];
-        
     } else {
+        // iOS 5, Social.framework unavailable, use Twitter.framework instead
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Facebook Error"
-                                  message:@"No facebook service on your device or\n cannot connect to internet."
+                                  message:@"No facebook service on your device or\n use Twitter instead?"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles: nil];
         [alertView show];
+
     }
+    
 }
 
 - (IBAction)tweetButtonTapped:(id)sender {
@@ -104,7 +106,7 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)updateLabels
+- (void) updateLabels
 {
     
     double numOfExceptions = [appDelegate.drivingExceptions count];
@@ -116,7 +118,7 @@
     resultLabel = @"You committed ";
     resultLabel = [resultLabel stringByAppendingString:@"\n"];
     resultLabel = [resultLabel stringByAppendingString:[NSString stringWithFormat:@"%g", numOfExceptions]];
-    resultLabel = [resultLabel stringByAppendingString:@" exceptions "];
+    resultLabel = [resultLabel stringByAppendingString:@" driving exceptions "];
     resultLabel = [resultLabel stringByAppendingString:@"\n"];
     resultLabel = [resultLabel stringByAppendingString:[NSString stringWithFormat:@" over %g", distance]];
     resultLabel = [resultLabel stringByAppendingString:@" "];

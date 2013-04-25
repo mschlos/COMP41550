@@ -13,6 +13,8 @@
 		F12401DB17287E8A0010137E /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401DA17287E8A0010137E /* icon114.png */; };
 		F12401DE172998940010137E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F12401DD172998940010137E /* Constants.m */; };
 		F12401E11729999B0010137E /* HelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F12401E01729999B0010137E /* HelperClass.m */; };
+		F12401E61729C1AB0010137E /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = F12401E51729C1AB0010137E /* star.png */; };
+		F12401EA1729CDF00010137E /* fells_loop-1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F12401E91729CDF00010137E /* fells_loop-1.gpx */; };
 		F1311536171959080070A60A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1311535171959080070A60A /* Social.framework */; };
 		F13115381719641B0070A60A /* horngoby.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115371719641B0070A60A /* horngoby.wav */; };
 		F131153A1719642E0070A60A /* tirespin.wav in Resources */ = {isa = PBXBuildFile; fileRef = F13115391719642E0070A60A /* tirespin.wav */; };
@@ -55,6 +57,8 @@
 		F12401DD172998940010137E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		F12401DF1729999B0010137E /* HelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperClass.h; path = ../HelperClass.h; sourceTree = "<group>"; };
 		F12401E01729999B0010137E /* HelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelperClass.m; path = ../HelperClass.m; sourceTree = "<group>"; };
+		F12401E51729C1AB0010137E /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		F12401E91729CDF00010137E /* fells_loop-1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "fells_loop-1.gpx"; path = "../fells_loop-1.gpx"; sourceTree = "<group>"; };
 		F1311535171959080070A60A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F13115371719641B0070A60A /* horngoby.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = horngoby.wav; sourceTree = "<group>"; };
 		F13115391719642E0070A60A /* tirespin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tirespin.wav; sourceTree = "<group>"; };
@@ -117,8 +121,8 @@
 		F12401E217299A0B0010137E /* Constants & Helper */ = {
 			isa = PBXGroup;
 			children = (
-				F12401DF1729999B0010137E /* HelperClass.h */,
 				F12401E01729999B0010137E /* HelperClass.m */,
+				F12401DF1729999B0010137E /* HelperClass.h */,
 				F12401DC172998940010137E /* Constants.h */,
 				F12401DD172998940010137E /* Constants.m */,
 			);
@@ -196,6 +200,8 @@
 		F16F2C2316B6CAF7006BDAE2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F12401E91729CDF00010137E /* fells_loop-1.gpx */,
+				F12401E51729C1AB0010137E /* star.png */,
 				F12401DA17287E8A0010137E /* icon114.png */,
 				F12401D817287E410010137E /* caricon57.png */,
 				F12401D21728697A0010137E /* eyes-on-prize.png */,
@@ -297,6 +303,8 @@
 				F12401D31728697A0010137E /* eyes-on-prize.png in Resources */,
 				F12401D917287E410010137E /* caricon57.png in Resources */,
 				F12401DB17287E8A0010137E /* icon114.png in Resources */,
+				F12401E61729C1AB0010137E /* star.png in Resources */,
+				F12401EA1729CDF00010137E /* fells_loop-1.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

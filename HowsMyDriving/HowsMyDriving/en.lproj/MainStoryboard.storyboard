@@ -28,7 +28,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxf-o9-PWt">
-                                <rect key="frame" x="36" y="195" width="249" height="158"/>
+                                <rect key="frame" x="36" y="153" width="249" height="158"/>
                                 <string key="text">When you are ready and your phone is colaborated and safely docked in your car, click Start Journey below to measure the G-Forces of your driving and rate your skills!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,6 +44,13 @@
                                 <rect key="frame" x="20" y="20" width="280" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ngM-jm-eX4">
+                                <rect key="frame" x="20" y="97" width="280" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -199,6 +206,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="star.png" id="34I-qe-cPR">
+                                <rect key="frame" x="198" y="29" width="99" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="78p-Iv-xiu">
+                                <rect key="frame" x="198" y="57" width="99" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -206,6 +224,8 @@
                         <outlet property="alt" destination="kcm-Gj-Cwh" id="Azh-j0-YAJ"/>
                         <outlet property="course" destination="Y40-og-R3y" id="rjA-ez-hXI"/>
                         <outlet property="distanceLabel" destination="Rbs-PO-qHz" id="qDi-x5-4JY"/>
+                        <outlet property="exceptionCount" destination="78p-Iv-xiu" id="HdI-8d-FXP"/>
+                        <outlet property="exceptionStar" destination="34I-qe-cPR" id="Zou-5T-fyo"/>
                         <outlet property="lat" destination="Wlu-VM-tMK" id="LmB-em-YGD"/>
                         <outlet property="locationManager" destination="u9k-UO-cMc" id="4OL-fy-5w0"/>
                         <outlet property="lon" destination="rPX-2v-VCa" id="GYT-QO-4ot"/>
@@ -365,6 +385,7 @@
         <image name="hows-my-driving.png" width="293" height="47"/>
         <image name="icon-facebook.jpg" width="205" height="200"/>
         <image name="show-rank.png" width="157" height="39"/>
+        <image name="star.png" width="256" height="256"/>
         <image name="start-again.png" width="156" height="39"/>
         <image name="start.png" width="198" height="41"/>
         <image name="stop.png" width="193" height="41"/>
@@ -380,6 +401,8 @@
                 <relationship kind="outlet" name="alt" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="course" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="exceptionCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="exceptionStar" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lat" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lon" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="road" candidateClass="UIImageView"/>

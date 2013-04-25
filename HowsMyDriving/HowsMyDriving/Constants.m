@@ -20,9 +20,9 @@ double const EAST_DEGREES = 67.5;
 double const NORTHEAST_DEGREES = 22.5;
 
 // Max number of seconds old a location update can be and still be recorded
-double const MAX_LOCATION_AGE = 1;
+double const MAX_LOCATION_AGE = 4;
 
 // Max distance in meters to accept for horizontal accuracy
-double const MAX_HORIZONTAL_ACCURACY = 10.0;
+double const MAX_HORIZONTAL_ACCURACY = 25.0;
 
 @end

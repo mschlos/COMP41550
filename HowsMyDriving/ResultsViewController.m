@@ -69,15 +69,12 @@
     
     displayText = [displayText stringByAppendingString:@"Travelling at "];
     
-    
-    //TODO BUG HERE 
-    
     NSLog(@"%f", _exception.exceptionLocation.speed);
     
-    if(_exception.exceptionLocation.speed == 0) {
-        displayText = [displayText stringByAppendingString:[NSString stringWithFormat:@"%.f km/h", _exception.exceptionLocation.speed]];
+    if(_exception.exceptionLocation.speed < 0) {
+        displayText = [displayText stringByAppendingString:[NSString stringWithFormat:@"0 km/h"]];
     } else {
-        displayText = [displayText stringByAppendingString:[NSString stringWithFormat:@"%f km/h", _exception.exceptionLocation.speed]];
+        displayText = [displayText stringByAppendingString:[NSString stringWithFormat:@"%.2lf km/h", _exception.exceptionLocation.speed]];
     }
     
     displayText = [displayText stringByAppendingString:@"\n"];

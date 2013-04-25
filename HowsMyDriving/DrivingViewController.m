@@ -19,7 +19,6 @@
 
 - (void) countUp {
     MainInt += 1;
-    //seconds.text = [NSString stringWithFormat:@"%i", MainInt];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,8 +35,11 @@
 {
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    exceptionStar.hidden = YES;
+    
     [appDelegate.drivingExceptions removeAllObjects];
     
+    // loading car horn sound
     NSURL *carHornURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"horngoby" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef) carHornURL, & carHorn);
 
@@ -55,6 +57,7 @@
                                   [UIImage imageNamed:@"Road3.png"],
                                   [UIImage imageNamed:@"Road4.png"],
                                   nil];
+    
     self.road.animationDuration = 0.5;
     self.road.transform = CGAffineTransformIdentity;
     [self.road startAnimating];
@@ -63,15 +66,12 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [locationManager startUpdatingLocation];
-    [locationManager startMonitoringSignificantLocationChanges];
-    
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     accelerometer = [UIAccelerometer sharedAccelerometer];
-    //accelerometer.updateInterval = 0.1;
+    
+    // location updates every half second
     accelerometer.updateInterval = 0.5;
     distance = 0.0;
     
@@ -92,18 +92,16 @@
     listenToAccel = false;
     
     [locationManager stopUpdatingLocation];
-    [locationManager stopMonitoringSignificantLocationChanges];
-    
 }
 
 - (void) mockSomeData {
     
     NSLog(@"No exceptions logged so mocking results for picker");
     
-    [self addException:@"* Harsh Breaking * "];
-    [self addException:@"* Unsafe Acceleration *"];
-    [self addException:@"* Unsafe Cornering *"];
-    [self addException:@"* Unsafe Bump *"];
+    [self addException:@"* Breaking * "];
+    [self addException:@"* Acceleration *"];
+    [self addException:@"* Cornering *"];
+    [self addException:@"* Bump *"];
 
 }
 
@@ -124,8 +122,8 @@
         NSLog(@"ZBar: %f", zBar.progress);
         
         //For harsh breaking:
-        //If Y Axis is below 0.75 for any longer than 5 seconds then that is harsh breaking
-        if (yBar.progress <= 0.75) {
+        //If Z Axis is below 0.5 for any longer than 3 seconds then that is harsh breaking
+        if (zBar.progress >= 0.5) {
             [self startHarshBreakingTimer];
         }
         else {
@@ -133,16 +131,16 @@
         }
         
         //For unsafe accelleration
-        //If Y Axis is above 1 for longer than 10 seconds then that is unsafe acceleration
-        if (yBar.progress >= 1) {
+        //If Y Axis is above 0.95 for longer than 5 seconds then that is unsafe acceleration
+        if (yBar.progress >= 0.95) {
             [self startUnsafeAccelerationTimer];
         }
         else {
             [self stopUnsafeAccelerationTimer];
         }
         
-        //For fast cornering, detect peak of 0.35 for X axis for 5 seconds
-        if (xBar.progress >= 0.35) {
+        //For fast cornering, detect peak of 0.25 for X axis for 5 seconds
+        if (xBar.progress >= 0.25) {
             [self startUnsafeCorneringTimer];
         } else {
             [self stopUnsafeCorneringTimer];
@@ -172,11 +170,11 @@
         long harshBreakingStopTime = [[NSDate date] timeIntervalSince1970];
         NSLog(@"Time stopHarshBreakingTimer =%ld", harshBreakingStopTime);
         
-        if(harshBreakingStopTime - harshBreakStartTime > 5)
+        if(harshBreakingStopTime - harshBreakStartTime > 3)
         {
             NSLog(@"HARSH BREAKING DETECTED");
             
-            [self addException:@"Harsh Breaking"];
+            [self addException:@"Breaking"];
         }
         harshBreakingStarted = false;
     }
@@ -199,10 +197,10 @@
         long harshAccelStopTime = [[NSDate date] timeIntervalSince1970];
         NSLog(@"Time stopUnsafeAccelerationTimer =%ld", harshAccelStopTime);
         
-        if(harshAccelStopTime - harshAccelStartTime >= 10) {
+        if(harshAccelStopTime - harshAccelStartTime >= 5) {
             NSLog(@"UNSAFE ACCELERATION DETECTED");
             
-            [self addException:@"Unsafe Acceleration"];
+            [self addException:@"Acceleration"];
             
         }
         unsafeAccelerationStarted = false;
@@ -230,7 +228,7 @@
             //log unsafe cornering exception
             NSLog(@"UNSAFE CORNERING DETECTED");
             
-            [self addException:@"Unsafe Cornering"];
+            [self addException:@"Cornering"];
             
         }
         unsafeCorneringStarted = false;
@@ -255,7 +253,7 @@
         
             //log unsafe bump exception
         NSLog(@"UNSAFE BUMP DETECTED");
-        [self addException:@"Unsafe Bump"];
+        [self addException:@"Bump"];
     }
     
     //Waiting 5 seconds before detecting another bump
@@ -268,6 +266,10 @@
 {
     AudioServicesPlaySystemSound(carHorn);
     
+    exceptionStar.hidden = false;
+    double count = [appDelegate.drivingExceptions count] + 1;
+    exceptionCount.text = [NSString stringWithFormat:@"%.f", count];
+    
     Exception *newException = [[Exception alloc] init];
         newException.time = [HelperClass getDateString];
         newException.exceptionTypeName = exceptionName;
@@ -278,26 +280,30 @@
     [appDelegate.drivingExceptions addObject:newException];
 }
 
+- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
+    NSLog(@"Pausing location Updates? Not on my watch!");
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
+{
+    NSLog(@"Resuming location Updates");
+}
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    //[manager stopUpdatingLocation];
     
-    currentLocation = [locations objectAtIndex:0];
+    currentLocation = [locations lastObject];
     
-    NSLog(@"Last Location = %@", lastLocation);
-    NSLog(@"Current Location = %@", currentLocation);
-    
-    //NSLog(@"Latitude: %f", location.coordinate.latitude );
-    //NSLog(@"Longitude: %f", location.coordinate.longitude );
-    //NSLog(@"Altitude: %f", location.altitude );
-    //NSLog(@"Course: %f", location.course );
+    NSLog(@"Latitude: %f", currentLocation.coordinate.latitude );
+    NSLog(@"Longitude: %f", currentLocation.coordinate.longitude );
+    NSLog(@"Altitude: %f", currentLocation.altitude );
+    NSLog(@"Course: %f", currentLocation.course );
+    NSLog(@"Speed: %f", lastLocation.speed);
     
     lat.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
     lon.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
     alt.text = [NSString stringWithFormat:@"%f", currentLocation.altitude];
     course.text = [HelperClass getCourseText:currentLocation.course];
-    
-  	//NSLog(@"%f%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
     if ([self isLocationValid:currentLocation]) {
 
@@ -306,30 +312,35 @@
         
         // Update the total distance 
         distance += currentDistance;
-        
+    
         //calculate distance in KM from distance (meters)
-        int KMs = (distance / 1000);
+        double KMs = (distance / 1000);
         
         if(KMs < 0) {
-            distanceLabel.text = @"0 km/h";
+            distanceLabel.text = @"0 KM";
         } else {
-            distanceLabel.text = [NSString stringWithFormat:@"%d", KMs];
+            distanceLabel.text = [NSString stringWithFormat:@"%.2lf KM" , KMs];
             appDelegate.exception.distance = KMs;
         }
         
         // get Speed from current location
+        double speed = currentLocation.speed;
         
-        if(currentLocation.speed < 0) {
+        if(speed < 0) {
             speedLabel.text = @"0 km/h";
         } else {
-            speedLabel.text = [NSString stringWithFormat:@"%f km/r", lastLocation.speed];
+            speedLabel.text = [NSString stringWithFormat:@"%.2lf km/r", lastLocation.speed];
         }
         
     }
-
+    
+    lastLocation = currentLocation;
 }
 
 - (BOOL)isLocationValid:(CLLocation *)location {
+    
+    NSLog(@"horizontalAccuracy %f: ",location.horizontalAccuracy);
+    NSLog(@"timeStamp %f: ",ABS([location.timestamp timeIntervalSinceNow]));
     
     // Check if the location update is current
     if (ABS([location.timestamp timeIntervalSinceNow]) > MAX_LOCATION_AGE) {

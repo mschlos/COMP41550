@@ -16,6 +16,9 @@
     AppDelegate *appDelegate;
     SystemSoundID carHorn;
     
+    IBOutlet UIImageView *exceptionStar;
+    IBOutlet UILabel *exceptionCount;
+    
     IBOutlet UILabel *xLabel;
     IBOutlet UILabel *yLabel;
     IBOutlet UILabel *zLabel;
@@ -58,8 +61,6 @@
     CLLocation *currentLocation;
     
 }
-
-//@property (retain, nonatomic) IBOutlet CLLocationManager *locationManager;
 
 @property (strong, nonatomic) IBOutlet UIImageView *road;
 
