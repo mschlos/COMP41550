@@ -19,9 +19,9 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         
         NSString *socialSentence;
-            socialSentence = @"I just got ranked ";
-            socialSentence = [socialSentence stringByAppendingString:[NSString stringWithFormat:@"%@", socialText]];
-            socialSentence = [socialSentence stringByAppendingString:[NSString stringWithFormat:@"%@", @" by How's My Driving App for iPhone! #HowsMyDriving"]];
+        socialSentence = @"I just got ranked ";
+        socialSentence = [socialSentence stringByAppendingString:[NSString stringWithFormat:@"%@", socialText]];
+        socialSentence = [socialSentence stringByAppendingString:[NSString stringWithFormat:@"%@", @" by How's My Driving App for iPhone! #HowsMyDriving"]];
         
         SLComposeViewController *fbComposer = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeFacebook];
@@ -39,7 +39,7 @@
         //present the composer to the user
         [self presentViewController:fbComposer animated:YES completion:nil];
         
-    }else {
+    } else {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Facebook Error"
                                   message:@"No facebook service on your device or\n cannot connect to internet."
@@ -89,8 +89,7 @@
     
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -98,8 +97,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self updateLabels];
     [super viewDidLoad];
@@ -179,17 +177,10 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [appDelegate release];
-    [drivingRankDescription release];
-    [drivingRank release];
-    [super dealloc];
-}
 
 @end

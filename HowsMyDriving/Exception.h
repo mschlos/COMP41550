@@ -11,9 +11,9 @@
 
 @interface Exception : NSObject
 
-@property (nonatomic, assign) NSString *exceptionTypeName; //Exception Type Name eg Harsh Breaking
-@property (nonatomic, assign) CLLocation *exceptionLocation; //lat, lon, alt, course, speed
+@property (nonatomic, retain) NSString *exceptionTypeName; //Exception Type Name eg Harsh Breaking
+@property (nonatomic, retain) CLLocation *exceptionLocation; //lat, lon, alt, course, speed
 @property (nonatomic, assign) double distance; //distance
-@property (nonatomic, assign) NSString *time; //time
+@property (nonatomic, retain) NSString *time; //time
 
 @end

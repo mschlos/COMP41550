@@ -12,15 +12,6 @@
 @synthesize drivingExceptions;
 @synthesize exception;
 
-- (void)dealloc
-{
-    [drivingExceptions release];
-    [exception release];
-
-    [_window release];
-    [super dealloc];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Initialising the drivingException arrays

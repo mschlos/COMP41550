@@ -7,15 +7,8 @@
 //
 
 #import "ResultsViewController.h"
-
-#define NORTH_DEGREES 337.5
-#define NORTHWEST_DEGREES 292.5
-#define WEST_DEGREES 247.5
-#define SOUTHWEST_DEGREES 202.5
-#define SOUTH_DEGREES 157.5
-#define SOUTHEAST_DEGREES 112.5
-#define EAST_DEGREES 67.5
-#define NORTHEAST_DEGREES 22.5
+#import "Constants.h"
+#import "HelperClass.h"
 
 @interface ResultsViewController ()
     
@@ -53,18 +46,19 @@
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"%ld", (long)row);
+    NSLog(@"Title For Row %ld", (long)row);
     Exception *_exception = (Exception *)[appDelegate.drivingExceptions objectAtIndex:row];  // explicit cast
     NSString *pickerText = _exception.exceptionTypeName;
-        pickerText = [pickerText stringByAppendingString:@" at "];
-        pickerText = [pickerText stringByAppendingString:_exception.time];
+    pickerText = [pickerText stringByAppendingString:@" at "];
+    NSString *time = _exception.time;
+        pickerText = [pickerText stringByAppendingString:time];
     
     return pickerText;
 }
 
 - (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%ld", (long)row);
+    NSLog(@"Did Select Row %ld", (long)row);
     Exception *_exception = (Exception *)[appDelegate.drivingExceptions objectAtIndex:row];  // explicit cast
     
     NSString *displayText = _exception.exceptionTypeName;
@@ -89,7 +83,7 @@
     displayText = [displayText stringByAppendingString:@"\n"];
     
     displayText = [displayText stringByAppendingString:@"Heading "];
-    displayText = [displayText stringByAppendingString:[self getCourseText:_exception.exceptionLocation.course]];
+    displayText = [displayText stringByAppendingString:[HelperClass getCourseText:_exception.exceptionLocation.course]];
     displayText = [displayText stringByAppendingString:@"\n"];
     
     displayText = [displayText stringByAppendingString:@"At location: "];
@@ -101,39 +95,10 @@
     exceptionLabel.text = displayText;
 }
 
-- (NSString *) getCourseText:(double) heading {
-    
-    if(heading > NORTH_DEGREES) {
-        return @"North";
-    } else if(heading > NORTHWEST_DEGREES) {
-        return @"North West";
-    } else if(heading > WEST_DEGREES) {
-        return @"West";
-    } else if(heading > SOUTHWEST_DEGREES) {
-        return @"South West";
-    } else if(heading > SOUTH_DEGREES) {
-        return @"South";
-    } else if(heading > SOUTHEAST_DEGREES) {
-        return @"South East";
-    } else if(heading > EAST_DEGREES) {
-        return @"East";
-    } else if(heading > NORTHEAST_DEGREES) {
-        return @"North East";
-    } else {
-        return @"North";
-    }
-    return @"";
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [appDelegate release];
-    [exceptionLabel release];
-    [super dealloc];
-}
 @end

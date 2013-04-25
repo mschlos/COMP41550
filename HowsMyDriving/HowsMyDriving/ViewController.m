@@ -14,17 +14,15 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
     NSURL *carStartURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tirespin" ofType:@"wav"]];
-    AudioServicesCreateSystemSoundID((CFURLRef) carStartURL, & carStart);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef) carStartURL, & carStart);
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

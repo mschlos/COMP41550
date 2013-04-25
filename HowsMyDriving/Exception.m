@@ -16,7 +16,8 @@
         _exceptionTypeName = @"";
         _exceptionLocation = nil;
         _distance = 0.0;
-        _time = @""; }
+        _time = @"";
+    }
     return self;
 }
 

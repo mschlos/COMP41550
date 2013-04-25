@@ -8,21 +8,8 @@
 
 #import "DrivingViewController.h"
 #import "AppDelegate.h"
-
-// Max number of seconds old a location update can be and still be recorded
-#define MAX_LOCATION_AGE 1
-
-// Max distance in meters to accept for horizontal accuracy
-#define MAX_HORIZONTAL_ACCURACY 10.0
-
-#define NORTH_DEGREES 337.5
-#define NORTHWEST_DEGREES 292.5
-#define WEST_DEGREES 247.5
-#define SOUTHWEST_DEGREES 202.5
-#define SOUTH_DEGREES 157.5
-#define SOUTHEAST_DEGREES 112.5
-#define EAST_DEGREES 67.5
-#define NORTHEAST_DEGREES 22.5
+#import "HelperClass.h"
+#import "Constants.h"
 
 @interface DrivingViewController ()
 
@@ -44,34 +31,6 @@
     return self;
 }
 
-- (void) dealloc {
-    
-    [xLabel release];
-    [yLabel release];
-    [zLabel release];
-    
-    [speedLabel release];
-    [distanceLabel release];
-    
-    [lat release];
-    [lon release];
-    [alt release];
-    [course release];
-    
-    [xBar release];
-    [yBar release];
-    [zBar release];
-    
-    [stopJourney release];
-    
-    [accelerometer release];
-    [locationManager release];
-    
-    [lastLocation release];
-    [currentLocation release];
-    
-    [super dealloc];
-}
 
 - (void)viewDidLoad
 {
@@ -80,7 +39,7 @@
     [appDelegate.drivingExceptions removeAllObjects];
     
     NSURL *carHornURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"horngoby" ofType:@"wav"]];
-    AudioServicesCreateSystemSoundID((CFURLRef) carHornURL, & carHorn);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef) carHornURL, & carHorn);
 
     harshBreakingStarted = false;
     unsafeAccelerationStarted = false;
@@ -310,7 +269,7 @@
     AudioServicesPlaySystemSound(carHorn);
     
     Exception *newException = [[Exception alloc] init];
-        newException.time = [[NSString alloc] initWithString:[self getDateString]];
+        newException.time = [HelperClass getDateString];
         newException.exceptionTypeName = exceptionName;
         newException.distance = distance;
         newException.exceptionLocation = currentLocation;
@@ -336,7 +295,7 @@
     lat.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
     lon.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
     alt.text = [NSString stringWithFormat:@"%f", currentLocation.altitude];
-    course.text = [self getCourseText:currentLocation.course];
+    course.text = [HelperClass getCourseText:currentLocation.course];
     
   	//NSLog(@"%f%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
@@ -367,49 +326,7 @@
         }
         
     }
-    
-    // Update the last location with the current location
-    [lastLocation release];
-    lastLocation = [currentLocation retain];
-}
 
-- (NSString *) getCourseText:(double) heading {
-    
-    if(heading > NORTH_DEGREES) {
-        return @"North";
-    } else if(heading > NORTHWEST_DEGREES) {
-        return @"North West";
-    } else if(heading > WEST_DEGREES) {
-        return @"West";
-    } else if(heading > SOUTHWEST_DEGREES) {
-        return @"South West";
-    } else if(heading > SOUTH_DEGREES) {
-        return @"South";
-    } else if(heading > SOUTHEAST_DEGREES) {
-        return @"South East";
-    } else if(heading > EAST_DEGREES) {
-        return @"East";
-    } else if(heading > NORTHEAST_DEGREES) {
-        return @"North East";
-    } else {
-        return @"North";
-    }
-    return @"";
-}
-
-- (NSString *)getDateString {
-    
-    //Setting the time
-    NSDate *date = [[NSDate alloc] init];
-    NSLog(@"%@", date);
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    
-    NSLog(@"%@", dateString);
-    
-    return dateString;
 }
 
 - (BOOL)isLocationValid:(CLLocation *)location {
